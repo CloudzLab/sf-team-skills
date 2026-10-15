@@ -1,0 +1,35 @@
+{
+  "extraKnownMarketplaces": {
+    "salesforce": {
+      "source": {
+        "source": "github",
+        "repo": "forcedotcom/sf-skills"
+      },
+      "autoUpdate": true
+    },
+    "cloudzlab": {
+      "source": {
+        "source": "github",
+        "repo": "CloudzLab/sf-team-skills"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "salesforce-development@salesforce": true,
+    "agentforce-adlc@salesforce": true,
+    "salesforce-code-quality@salesforce": true,
+    "dx-org-lifecycle@salesforce": true,
+    "dx-devops@salesforce": true,
+    "integration@salesforce": true,
+    "platform-observability@salesforce": true,
+    "platform-trust-security@salesforce": true,
+    "platform-lightning-widgets@salesforce": true,
+    "experience-lwc@salesforce": true,
+    "experience-react@salesforce": true,
+    "experience-cms@salesforce": true,
+    "service-engagement@salesforce": true,
+    "service-omni@salesforce": true,
+    "sf-platform-extras@cloudzlab": true
+  }
+}

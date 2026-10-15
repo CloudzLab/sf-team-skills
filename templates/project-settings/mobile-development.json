@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "salesforce": {
+      "source": {
+        "source": "github",
+        "repo": "forcedotcom/sf-skills"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "mobile-development@salesforce": true
+  }
+}

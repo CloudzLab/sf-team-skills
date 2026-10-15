@@ -1,0 +1,20 @@
+{
+  "name": "sf-commerce",
+  "version": "1.0.0",
+  "description": "Commerce beyond B2B storefront components: B2B store setup, delivery estimates, BOPIS, fees, returns, merchant catalogs and buyer groups, merchant insights and React storefronts.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "commerce",
+    "b2b store",
+    "d2c",
+    "storefront",
+    "bopis",
+    "order summary"
+  ]
+}

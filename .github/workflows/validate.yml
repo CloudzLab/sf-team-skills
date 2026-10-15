@@ -1,0 +1,39 @@
+name: Validate catalog
+
+# Checks every PR (including hand edits to config/ or templates/) with Claude Code's plugin validator.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generated files match config
+        run: |
+          python3 scripts/sync.py
+          if git status --porcelain -- plugins .claude-plugin managed-settings.json templates | grep -q .; then
+            echo "::warning::Generated files differ from a fresh sync (upstream moved, or config/ was edited without re-running scripts/sync.py)."
+            git status --short -- plugins .claude-plugin managed-settings.json templates | head -20
+          fi
+          git checkout -- . && git clean -fdq -- plugins templates
+
+      - name: Validate plugins
+        run: |
+          npm install --global @anthropic-ai/claude-code
+          scripts/validate.sh

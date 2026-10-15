@@ -1,0 +1,20 @@
+{
+  "name": "sf-omnistudio",
+  "version": "1.0.0",
+  "description": "OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "omnistudio",
+    "omniscript",
+    "flexcard",
+    "integration procedure",
+    "datamapper",
+    "dataraptor"
+  ]
+}

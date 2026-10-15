@@ -1,0 +1,19 @@
+{
+  "name": "sf-crm-analytics",
+  "version": "1.0.0",
+  "description": "CRM Analytics and Tableau Next: dashboards, report notifications, sharing inheritance and Tableau Next setup.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "crm analytics",
+    "tableau next",
+    "tableau",
+    "wave",
+    "analytics dashboard"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "sf-industries-misc",
+  "version": "1.0.0",
+  "description": "Smaller packs: Communications Cloud, Nonprofit (fundraising, volunteers), Life Sciences, Insurance, Sales (call scoring) and Marketing.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "communications cloud",
+    "tmf",
+    "nonprofit",
+    "volunteer",
+    "life sciences",
+    "insurance"
+  ]
+}

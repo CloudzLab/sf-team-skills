@@ -1,0 +1,20 @@
+{
+  "name": "sf-service-itsm",
+  "version": "1.0.0",
+  "description": "IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "itsm",
+    "it service",
+    "incident",
+    "cmdb",
+    "service catalog",
+    "contact center"
+  ]
+}

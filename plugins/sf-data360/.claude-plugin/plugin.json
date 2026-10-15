@@ -1,0 +1,20 @@
+{
+  "name": "sf-data360",
+  "version": "1.0.0",
+  "description": "Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "data 360",
+    "data cloud",
+    "dmo",
+    "dlo",
+    "data stream",
+    "identity resolution"
+  ]
+}

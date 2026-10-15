@@ -1,0 +1,20 @@
+{
+  "name": "sf-consumer-goods",
+  "version": "1.0.0",
+  "description": "Consumer Goods Cloud: store visits and activities, trade promotions, promotion dashboards and data sync.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "consumer goods",
+    "retail execution",
+    "store visit",
+    "trade promotion",
+    "tpm",
+    "tpe"
+  ]
+}

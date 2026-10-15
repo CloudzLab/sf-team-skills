@@ -1,0 +1,20 @@
+{
+  "name": "sf-field-service",
+  "version": "1.0.0",
+  "description": "Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "field service",
+    "fsl",
+    "scheduling policy",
+    "work plan",
+    "work rule",
+    "service appointment"
+  ]
+}

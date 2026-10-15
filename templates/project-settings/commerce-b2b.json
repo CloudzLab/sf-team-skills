@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "salesforce": {
+      "source": {
+        "source": "github",
+        "repo": "forcedotcom/sf-skills"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "commerce-b2b@salesforce": true
+  }
+}

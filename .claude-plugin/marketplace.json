@@ -1,0 +1,170 @@
+{
+  "name": "cloudzlab",
+  "owner": {
+    "name": "CloudzLab"
+  },
+  "metadata": {
+    "description": "CloudzLab team catalog: Salesforce skills from forcedotcom/sf-skills that Salesforce does not ship in an official plugin, grouped into team plugins."
+  },
+  "plugins": [
+    {
+      "name": "sf-platform-extras",
+      "source": "./plugins/sf-platform-extras",
+      "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "salesforce docs",
+        "apexguru",
+        "slds",
+        "org shape",
+        "org snapshot",
+        "data mask"
+      ]
+    },
+    {
+      "name": "sf-experience-extras",
+      "source": "./plugins/sf-experience-extras",
+      "description": "Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "experience cloud",
+        "lwr site",
+        "portal",
+        "community",
+        "custom domain",
+        "navigation menu"
+      ]
+    },
+    {
+      "name": "sf-data360",
+      "source": "./plugins/sf-data360",
+      "description": "Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "data 360",
+        "data cloud",
+        "dmo",
+        "dlo",
+        "data stream",
+        "identity resolution"
+      ]
+    },
+    {
+      "name": "sf-field-service",
+      "source": "./plugins/sf-field-service",
+      "description": "Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "field service",
+        "fsl",
+        "scheduling policy",
+        "work plan",
+        "work rule",
+        "service appointment"
+      ]
+    },
+    {
+      "name": "sf-omnistudio",
+      "source": "./plugins/sf-omnistudio",
+      "description": "OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "omnistudio",
+        "omniscript",
+        "flexcard",
+        "integration procedure",
+        "datamapper",
+        "dataraptor"
+      ]
+    },
+    {
+      "name": "sf-commerce",
+      "source": "./plugins/sf-commerce",
+      "description": "Commerce beyond B2B storefront components: B2B store setup, delivery estimates, BOPIS, fees, returns, merchant catalogs and buyer groups, merchant insights and React storefronts.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "commerce",
+        "b2b store",
+        "d2c",
+        "storefront",
+        "bopis",
+        "order summary"
+      ]
+    },
+    {
+      "name": "sf-service-itsm",
+      "source": "./plugins/sf-service-itsm",
+      "description": "IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "itsm",
+        "it service",
+        "incident",
+        "cmdb",
+        "service catalog",
+        "contact center"
+      ]
+    },
+    {
+      "name": "sf-consumer-goods",
+      "source": "./plugins/sf-consumer-goods",
+      "description": "Consumer Goods Cloud: store visits and activities, trade promotions, promotion dashboards and data sync.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "consumer goods",
+        "retail execution",
+        "store visit",
+        "trade promotion",
+        "tpm",
+        "tpe"
+      ]
+    },
+    {
+      "name": "sf-crm-analytics",
+      "source": "./plugins/sf-crm-analytics",
+      "description": "CRM Analytics and Tableau Next: dashboards, report notifications, sharing inheritance and Tableau Next setup.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "crm analytics",
+        "tableau next",
+        "tableau",
+        "wave",
+        "analytics dashboard"
+      ]
+    },
+    {
+      "name": "sf-industries-misc",
+      "source": "./plugins/sf-industries-misc",
+      "description": "Smaller packs: Communications Cloud, Nonprofit (fundraising, volunteers), Life Sciences, Insurance, Sales (call scoring) and Marketing.",
+      "version": "1.0.0",
+      "category": "salesforce",
+      "keywords": [
+        "salesforce",
+        "communications cloud",
+        "tmf",
+        "nonprofit",
+        "volunteer",
+        "life sciences",
+        "insurance"
+      ]
+    }
+  ]
+}

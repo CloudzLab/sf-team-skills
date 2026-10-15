@@ -1,0 +1,61 @@
+name: Sync Salesforce skills
+
+# Rebuilds the team plugins from forcedotcom/sf-skills and opens a PR when anything changed.
+# Requires: Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+
+on:
+  schedule:
+    - cron: "0 5 * * 1-5" # weekdays, 05:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-salesforce-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Rebuild team plugins
+        run: python3 scripts/sync.py
+
+      - name: Detect catalog changes
+        id: changes
+        run: |
+          if git status --porcelain -- plugins .claude-plugin managed-settings.json templates | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No catalog changes; nothing to propose."
+          fi
+
+      - name: Validate plugins
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          npm install --global @anthropic-ai/claude-code
+          scripts/validate.sh
+
+      - name: Open or update the sync PR
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/salesforce-skills
+          delete-branch: true
+          commit-message: "chore(sync): rebuild team plugins from forcedotcom/sf-skills"
+          title: "Sync Salesforce skills"
+          body-path: SYNC_REPORT.md
+          labels: salesforce-sync

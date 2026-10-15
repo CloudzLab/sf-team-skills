@@ -1,0 +1,174 @@
+{
+  "$comment": "Source of truth for the CloudzLab Salesforce plugin catalog. scripts/sync.py reads this file; edit it, then re-run the sync.",
+
+  "catalog": {
+    "name": "cloudzlab",
+    "repo": "CloudzLab/sf-team-skills",
+    "description": "CloudzLab team catalog: Salesforce skills from forcedotcom/sf-skills that Salesforce does not ship in an official plugin, grouped into team plugins.",
+    "owner": "CloudzLab"
+  },
+
+  "upstream": {
+    "catalog": "salesforce",
+    "repo": "forcedotcom/sf-skills",
+    "url": "https://github.com/forcedotcom/sf-skills.git",
+    "ref": "main",
+    "officialPluginGlob": "plugins/*/*"
+  },
+
+  "officialPlugins": {
+    "$comment": "Every official plugin must be listed as core or specialist. The sync flags any new official plugin that is in neither list.",
+    "core": [
+      "salesforce-development",
+      "agentforce-adlc",
+      "salesforce-code-quality",
+      "dx-org-lifecycle",
+      "dx-devops",
+      "integration",
+      "platform-observability",
+      "platform-trust-security",
+      "platform-lightning-widgets",
+      "experience-lwc",
+      "experience-react",
+      "experience-cms",
+      "service-engagement",
+      "service-omni"
+    ],
+    "specialist": [
+      "commerce-b2b",
+      "mobile-development",
+      "dx-isv-partner",
+      "education-cloud",
+      "salesforce-test-drive"
+    ],
+    "specialistKeywords": {
+      "$comment": "Finder trigger words for official specialist plugins.",
+      "commerce-b2b": ["B2B Commerce storefront", "Open Code"],
+      "mobile-development": ["Mobile SDK", "native Salesforce mobile app"],
+      "dx-isv-partner": ["ISV", "managed package", "AppExchange"],
+      "education-cloud": ["Education Cloud", "academic term"],
+      "salesforce-test-drive": ["test drive", "demo build"]
+    }
+  },
+
+  "teamPlugins": [
+    {
+      "name": "sf-platform-extras",
+      "tier": "core",
+      "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder.",
+      "areas": "Platform tools, DX tooling, SLDS, Flow planning, Agentforce setup",
+      "keywords": ["Salesforce docs", "ApexGuru", "SLDS", "org shape", "org snapshot", "data mask", "Models API"],
+      "prefixes": ["platform-", "dx-", "design-systems-", "automation-", "integration-", "external-", "agentforce-"]
+    },
+    {
+      "name": "sf-experience-extras",
+      "tier": "specialist",
+      "description": "Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup.",
+      "areas": "Experience Cloud sites and portals",
+      "keywords": ["Experience Cloud", "LWR site", "portal", "community", "custom domain", "navigation menu", "Lightning Out"],
+      "prefixes": ["experience-"]
+    },
+    {
+      "name": "sf-data360",
+      "tier": "specialist",
+      "description": "Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs.",
+      "areas": "Data 360 / Data Cloud",
+      "keywords": ["Data 360", "Data Cloud", "DMO", "DLO", "data stream", "identity resolution", "segment", "calculated insight", "activation", "semantic model"],
+      "prefixes": ["data360-"]
+    },
+    {
+      "name": "sf-field-service",
+      "tier": "specialist",
+      "description": "Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs.",
+      "areas": "Field Service",
+      "keywords": ["Field Service", "FSL", "scheduling policy", "work plan", "work rule", "service appointment", "technician"],
+      "prefixes": ["field-service-"]
+    },
+    {
+      "name": "sf-omnistudio",
+      "tier": "specialist",
+      "description": "OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment.",
+      "areas": "OmniStudio",
+      "keywords": ["OmniStudio", "OmniScript", "FlexCard", "Integration Procedure", "DataMapper", "DataRaptor", "DataPack", "EPC"],
+      "prefixes": ["omnistudio-"]
+    },
+    {
+      "name": "sf-commerce",
+      "tier": "specialist",
+      "description": "Commerce beyond B2B storefront components: B2B store setup, delivery estimates, BOPIS, fees, returns, merchant catalogs and buyer groups, merchant insights and React storefronts.",
+      "areas": "Commerce (B2B/D2C store setup, fulfilment, merchant tools)",
+      "keywords": ["Commerce", "B2B store", "D2C", "storefront", "BOPIS", "order summary", "buyer group", "merchant"],
+      "prefixes": ["commerce-"]
+    },
+    {
+      "name": "sf-service-itsm",
+      "tier": "specialist",
+      "description": "IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog.",
+      "areas": "IT Service Management, Service Cloud extras",
+      "keywords": ["ITSM", "IT service", "incident", "CMDB", "service catalog", "contact center", "Microsoft Teams", "swarming"],
+      "prefixes": ["service-"]
+    },
+    {
+      "name": "sf-fsc",
+      "tier": "specialist",
+      "description": "Financial Services Cloud: digital loan origination, pricing, product catalog, stage management, flexible account hierarchies and document checklists.",
+      "areas": "Financial Services Cloud",
+      "keywords": ["Financial Services Cloud", "FSC", "loan origination", "digital origination", "banking", "wealth", "account hierarchy"],
+      "prefixes": ["fsc-"]
+    },
+    {
+      "name": "sf-health-cloud",
+      "tier": "specialist",
+      "description": "Health Cloud: appointment booking, provider search, care requests, referrals, virtual visits and the patient timeline.",
+      "areas": "Health Cloud",
+      "keywords": ["Health Cloud", "patient", "provider search", "care request", "referral", "virtual visit", "appointment booking"],
+      "prefixes": ["health-cloud-"]
+    },
+    {
+      "name": "sf-industries",
+      "tier": "specialist",
+      "description": "Settings shared across Industry clouds: decision tables and matrices, contact center, home health, care management, fundraising, compliance and document AI.",
+      "areas": "Industries settings (cross-cloud)",
+      "keywords": ["Industries", "decision table", "decision matrix", "home health", "care management", "fundraising", "compliance", "Business Rules Engine"],
+      "prefixes": ["industries-"]
+    },
+    {
+      "name": "sf-consumer-goods",
+      "tier": "specialist",
+      "description": "Consumer Goods Cloud: store visits and activities, trade promotions, promotion dashboards and data sync.",
+      "areas": "Consumer Goods Cloud",
+      "keywords": ["Consumer Goods", "retail execution", "store visit", "trade promotion", "TPM", "TPE"],
+      "prefixes": ["consumer-goods-"]
+    },
+    {
+      "name": "sf-automotive",
+      "tier": "specialist",
+      "description": "Automotive Cloud: dealer setup, vehicle appraisals, sales concierge agents and their data pipelines.",
+      "areas": "Automotive Cloud",
+      "keywords": ["Automotive Cloud", "dealer", "vehicle", "appraisal", "sales concierge"],
+      "prefixes": ["automotive-cloud-"]
+    },
+    {
+      "name": "sf-crm-analytics",
+      "tier": "specialist",
+      "description": "CRM Analytics and Tableau Next: dashboards, report notifications, sharing inheritance and Tableau Next setup.",
+      "areas": "CRM Analytics, Tableau Next",
+      "keywords": ["CRM Analytics", "Tableau Next", "Tableau", "Wave", "analytics dashboard"],
+      "prefixes": ["crm-analytics-", "tableau-next-"]
+    },
+    {
+      "name": "sf-industries-misc",
+      "tier": "specialist",
+      "description": "Smaller packs: Communications Cloud, Nonprofit (fundraising, volunteers), Life Sciences, Insurance, Sales (call scoring) and Marketing.",
+      "areas": "Communications, Nonprofit, Life Sciences, Insurance, Sales, Marketing",
+      "keywords": ["Communications Cloud", "TMF", "Nonprofit", "volunteer", "Life Sciences", "Insurance", "call scoring", "Marketing Cloud"],
+      "prefixes": ["communications-", "nonprofit-", "life-sciences-", "insurance-", "sales-", "marketing-"],
+      "fallback": true
+    }
+  ],
+
+  "finder": {
+    "plugin": "sf-platform-extras",
+    "skill": "sf-plugin-finder"
+  }
+}

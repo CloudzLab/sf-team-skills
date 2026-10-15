@@ -1,0 +1,20 @@
+{
+  "name": "sf-platform-extras",
+  "version": "1.0.0",
+  "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "salesforce docs",
+    "apexguru",
+    "slds",
+    "org shape",
+    "org snapshot",
+    "data mask"
+  ]
+}
