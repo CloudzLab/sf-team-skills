@@ -104,11 +104,32 @@ Everyone who opens that repo then gets the plugin, only in that repo. Claude Cod
 
 1. In claude.ai, go to **Organization settings → Claude Code → Managed settings** (Owner or Primary Owner role).
 2. Paste the contents of [`managed-settings.json`](managed-settings.json) and save.
-3. Clients pick it up at startup and refresh hourly.
+3. Clients fetch it at startup and refresh hourly. The plugins install at each developer's **next session start**; open sessions don't change until they restart. Nobody is prompted.
 
 When a sync PR says `managed-settings.json` changed, merge it and paste the file again.
 
-**Repo access.** Claude Code downloads the `cloudzlab` catalog with each developer's own git credentials. If this repo is private, every developer needs read access to it and a working GitHub login (`gh auth login` or SSH). If it's public, nothing is needed. The content is Apache-2.0 skills from Salesforce plus generated manifests.
+This repo is public, so developers need no GitHub access or login for the `cloudzlab` catalog.
+
+### Rolling it out
+
+1. **Pilot on your own machine.** Paste the settings, restart only your Claude Code, and check:
+   - `claude plugin list` shows the 15 core plugins, including `sf-platform-extras@cloudzlab`;
+   - plugins from catalogs you added yourself still work. The docs don't say how the admin catalog list combines with a developer's own, so confirm this before the team relies on it;
+   - asking for a specialist area (e.g. "create an OmniScript for a customer intake form") makes `sf-plugin-finder` suggest `sf-omnistudio`.
+2. **Announce it.** Tell the team to restart Claude Code, then ask Claude to clean up old npx Salesforce skills, and share this README or the team guide.
+3. **Add settings files to specialist repos** (see *For repo owners*).
+
+### What happens to existing setups
+
+Nothing is uninstalled or removed. From the Claude Code docs on plugin loading:
+
+| A developer already has… | When the managed settings arrive |
+|---|---|
+| Some core plugins from the `salesforce` catalog | Nothing changes for those; they become locked on (a developer can't disable a managed plugin). |
+| The same plugin from another catalog, e.g. `agentforce-adlc` from the Claude plugin directory | Only one copy loads, and the managed one wins. The old copy stays on disk unused until they uninstall it. |
+| Other plugins of their own | Unaffected. Plugin lists combine per plugin; the managed list only switches on what it names. |
+| Specialist plugins installed for every project | They stay on. Suggest `claude plugin list` and uninstalling what they don't use daily, to keep sessions light. |
+| Salesforce skills from `npx skills add forcedotcom/sf-skills` | Untouched, so they duplicate the plugin versions and never update. That's why the cleanup step matters. |
 
 ## For the catalog maintainer
 
@@ -155,7 +176,7 @@ Each enabled plugin adds its skill descriptions to every session. These figures 
 | `sf-service-itsm` | ~7,300 |
 | `experience-lwc` | ~4,300 |
 | `service-engagement` | ~4,000 |
-| `sf-platform-extras` | ~3,900 |
+| `sf-platform-extras` | ~4,000 |
 | `sf-industries-misc` | ~2,900 |
 | `agentforce-adlc` | ~2,500 |
 | `sf-field-service` | ~2,000 |
