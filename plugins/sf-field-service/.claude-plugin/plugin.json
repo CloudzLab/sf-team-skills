@@ -1,6 +1,6 @@
 {
   "name": "sf-field-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs.",
   "author": {
     "name": "CloudzLab"

@@ -1,6 +1,6 @@
 {
   "name": "sf-crm-analytics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CRM Analytics and Tableau Next: dashboards, report notifications, sharing inheritance and Tableau Next setup.",
   "author": {
     "name": "CloudzLab"

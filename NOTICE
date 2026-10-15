@@ -1,9 +1,9 @@
 CloudzLab Salesforce team skills catalog
 
-The skills in the plugins/ directory, except sf-plugin-finder, are copied without
+The skills in the plugins/ directory, except sf-plugin-finder and sf-npx-cleanup, are copied without
 modification from forcedotcom/sf-skills (https://github.com/forcedotcom/sf-skills),
 Copyright (c) 2026 Salesforce, Inc., licensed under the Apache License, Version 2.0
 (see LICENSE.txt).
 
 CloudzLab regroups those skills into separate plugins and adds generated plugin
-manifests, catalog files and the sf-plugin-finder skill.
+manifests, catalog files and the sf-plugin-finder and sf-npx-cleanup skills.
