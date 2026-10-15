@@ -36,7 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "config" / "catalog.json"
 STATE = ROOT / "state" / "index.json"
-FINDER_TEMPLATE = ROOT / "templates" / "sf-plugin-finder.SKILL.md"
+FINDER_TEMPLATE = ROOT / "templates" / "skills" / "sf-plugin-finder.SKILL.md"
 DESCRIPTION_LIMIT = 1024  # Agent Skills spec limit for a skill description
 RETIRE_AFTER_DAYS = 30
 LARGE_CHANGE_RATIO = 0.25  # flag syncs that add or remove more than this share of team skills
@@ -208,8 +208,10 @@ def main():
 
         team_plugin_names = [p["name"] for p in cfg["teamPlugins"]]
         finder_name = cfg["finder"]["skill"]
-        if finder_name in root_skills or finder_name in official_skill_owner:
-            sys.exit(f"error: upstream now has a skill named {finder_name}; rename the finder in config/catalog.json")
+        owned = cfg.get("ownedSkills", [])
+        for own_name in [finder_name] + [o["skill"] for o in owned]:
+            if own_name in root_skills or own_name in official_skill_owner:
+                sys.exit(f"error: upstream now has a skill named {own_name}; rename ours in config/catalog.json")
 
         # 1. Work out which skills belong in the team catalog, and where.
         assignments, unmatched = {}, []
@@ -234,9 +236,10 @@ def main():
             name = plugin["name"]
             skills = list(team[name])
             is_finder_home = name == cfg["finder"]["plugin"]
+            owned_here = [o for o in owned if o["plugin"] == name]
             previous = state["plugins"].get(name)
 
-            if not skills and not is_finder_home:
+            if not skills and not is_finder_home and not owned_here:
                 retired_since = state["retired"].get(name, today.isoformat())
                 age = (today - datetime.date.fromisoformat(retired_since)).days
                 if previous is None and name not in state["retired"]:
@@ -260,6 +263,9 @@ def main():
                 (finder_dir / "references").mkdir(parents=True)
                 (finder_dir / "SKILL.md").write_text(finder_body)
                 (finder_dir / "references" / "skill-index.md").write_text(finder_index)
+            for own in owned_here:
+                shutil.copytree(ROOT / own["source"], plugin_dir / "skills" / own["skill"],
+                                ignore=shutil.ignore_patterns(*IGNORED_FILES))
             shutil.copy(ROOT / "LICENSE.txt", plugin_dir / "LICENSE.txt")
             shutil.copy(ROOT / "NOTICE", plugin_dir / "NOTICE")
 

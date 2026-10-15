@@ -35,7 +35,7 @@ A plugin is downloaded once per machine. Being *enabled* is what decides whether
 | `experience-cms` | salesforce | Salesforce CMS content for Experience Cloud |
 | `service-engagement` | salesforce | Messaging, web chat, WhatsApp, Email-to-Case, agent-to-human handoff |
 | `service-omni` | salesforce | Omni-Channel routing |
-| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`** |
+| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`** and **`sf-npx-cleanup`** |
 
 ### Specialist plugins (off until needed)
 
@@ -61,12 +61,19 @@ Some team plugins are defined in `config/catalog.json` but not currently built, 
 ## For developers
 
 1. **Sign in to Claude Code with your CloudzLab claude.ai account** (`/login`). Managed settings don't reach sessions that use an API key.
-2. **Remove old `npx` copies of Salesforce skills** (one time). They can override the plugin versions:
+2. **Restart Claude Code.** The core plugins install themselves.
+3. **Remove old `npx` copies of Salesforce skills** (one time). If you ever ran `npx skills add forcedotcom/sf-skills`, those loose copies never update and can be picked instead of the plugin versions. Ask Claude:
+
+   > Clean up my old npx Salesforce skills
+
+   The `sf-npx-cleanup` skill (in `sf-platform-extras`) previews what it found, asks before removing anything, and backs everything up to `~/.agents/backup-sf-skills-<timestamp>/`. Restart Claude Code afterwards.
+
+   Without Claude, download the script, read it, then run it:
    ```bash
-   scripts/cleanup-npx-salesforce-skills.sh           # shows what it would remove
-   scripts/cleanup-npx-salesforce-skills.sh --apply   # backs up, then removes
+   curl -fsSLo cleanup-sf.sh https://raw.githubusercontent.com/CloudzLab/sf-team-skills/main/plugins/sf-platform-extras/skills/sf-npx-cleanup/scripts/cleanup-npx-salesforce-skills.sh
+   bash cleanup-sf.sh            # shows what it would remove
+   bash cleanup-sf.sh --apply    # backs up, then removes
    ```
-3. **Restart Claude Code.** The core plugins install themselves.
 
 When you need a specialist area, just ask. `sf-plugin-finder` recognises the product (e.g. "set up an OmniScript") and offers to switch on the right plugin. You can also run `/plugin` and browse the `cloudzlab` and `salesforce` catalogs. When switching one on, choose:
 
@@ -134,7 +141,7 @@ python3 scripts/sync.py --source ../sf-skills   # or uses an existing checkout
 scripts/validate.sh                             # needs the claude CLI
 ```
 
-To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. The finder's instructions live in `templates/sf-plugin-finder.SKILL.md`.
+To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. Team-written skills live in `templates/skills/`: the finder's template is `sf-plugin-finder.SKILL.md` (the sync fills in its plugin table), and other team skills such as `sf-npx-cleanup/` are listed under `ownedSkills` in the config and copied as they are.
 
 **One-time GitHub setup.** Enable *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* so the sync can open PRs.
 
@@ -161,4 +168,4 @@ Run `claude plugin details <plugin>` for current numbers.
 
 ## Licence
 
-The skills under `plugins/` (except `sf-plugin-finder`) are copied unmodified from forcedotcom/sf-skills, © Salesforce, Inc., Apache-2.0. See [LICENSE.txt](LICENSE.txt) and [NOTICE](NOTICE).
+The skills under `plugins/` (except `sf-plugin-finder` and `sf-npx-cleanup`) are copied unmodified from forcedotcom/sf-skills, © Salesforce, Inc., Apache-2.0. See [LICENSE.txt](LICENSE.txt) and [NOTICE](NOTICE).

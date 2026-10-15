@@ -1,6 +1,6 @@
 {
   "name": "sf-experience-extras",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup.",
   "author": {
     "name": "CloudzLab"
