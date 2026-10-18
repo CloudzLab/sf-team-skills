@@ -55,7 +55,7 @@
     {
       "name": "sf-platform-extras",
       "tier": "core",
-      "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder and sf-npx-cleanup.",
+      "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder, sf-npx-cleanup and sf-setup-reset.",
       "areas": "Platform tools, DX tooling, SLDS, Flow planning, Agentforce setup",
       "keywords": ["Salesforce docs", "ApexGuru", "SLDS", "org shape", "org snapshot", "data mask", "Models API"],
       "prefixes": ["platform-", "dx-", "design-systems-", "automation-", "integration-", "external-", "agentforce-"]
@@ -178,6 +178,11 @@
       "plugin": "sf-platform-extras",
       "skill": "sf-npx-cleanup",
       "source": "templates/skills/sf-npx-cleanup"
+    },
+    {
+      "plugin": "sf-platform-extras",
+      "skill": "sf-setup-reset",
+      "source": "templates/skills/sf-setup-reset"
     }
   ],
   "ownedHooks": [

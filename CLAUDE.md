@@ -16,7 +16,7 @@ Team skills are always recomputed as *skills in sf-skills/skills/ minus skills i
 | Path | Edit? | Purpose |
 |---|---|---|
 | `config/catalog.json` | **Yes** | Source of truth: team plugins, prefixes, tiers, descriptions, finder keywords, official core/specialist lists, `ownedSkills` |
-| `templates/skills/` | **Yes** | Team-written skills: `sf-plugin-finder.SKILL.md` (sync fills in `{{PLUGIN_TABLE}}` etc.) and `sf-npx-cleanup/` (copied verbatim) |
+| `templates/skills/` | **Yes** | Team-written skills: `sf-plugin-finder.SKILL.md` (sync fills in `{{PLUGIN_TABLE}}` etc.) and `sf-npx-cleanup/`, `sf-setup-reset/` (copied verbatim) |
 | `templates/hooks/sf-platform-extras/` | **Yes** | Team-written SessionStart hook (`ownedHooks`): notices plugins a repo's settings enable that aren't installed, and gives the install command |
 | `scripts/sync.py` | Yes | Regenerates everything below and writes `SYNC_REPORT.md` (PR body, gitignored) |
 | `scripts/validate.sh` | Yes | `claude plugin validate --strict` on catalog + every plugin, JSON checks |
@@ -58,12 +58,9 @@ scripts/validate.sh                              # needs the claude CLI
 
 ## Status (2026-10-18)
 
-Done: catalog built and pushed (10 team plugins, 101 skills + 2 team skills), repo public, Actions allowed to open PRs, actions on Node 24 versions (PR #1), `sf-npx-cleanup` skill (PR #2), rollout docs (PR #3). Validation and a manual sync run pass on GitHub. Sandbox pilot (2026-10-18): core install, finder and cleanup triggering verified; repo settings found not to install plugins, so the missing-plugin hook was added.
+Done: catalog built and pushed (10 team plugins, 101 skills + 2 team skills), repo public, Actions allowed to open PRs, actions on Node 24 versions (PR #1), `sf-npx-cleanup` skill (PR #2), rollout docs (PR #3). Validation and a manual sync run pass on GitHub. Sandbox pilot (2026-10-18): core install, finder and cleanup triggering verified; repo settings found not to install plugins, so the missing-plugin hook was added (PR #5). Real-machine pilot (2026-10-18): managed settings pasted in claude.ai and delivered identically; 15 core plugins installed with scope `managed`; the `cloudzlab` catalog and `sf-platform-extras` arrived on the first restart (install record written on the next start); self-added catalogs intact; missing-plugin notice shows under the header at startup. Team guide updated. `sf-setup-reset` skill added so developers can reset to the team baseline.
 
 Next:
-1. Org Owner pastes `managed-settings.json` into claude.ai → Organization settings → Claude Code → Managed settings.
-2. Pilot on the admin's real machine (first remove their user-scope specialists: commerce-b2b, mobile-development, dx-isv-partner, salesforce-test-drive): 15 core plugins appear via claude.ai delivery; self-added catalogs still work; the missing-plugin notice shows in a repo with a project settings file. Update the team guide page's per-repo wording to match the README.
-3. Announce to the team (restart, then cleanup) and add per-project settings files to specialist repos.
-4. Watch the first automatic sync PR: the `create-pull-request@v8` step hasn't run yet.
-
-Not yet verified live: managed settings delivered from claude.ai (sandbox used a local settings file), the hook's notice as displayed in the interactive UI (verified headless only).
+1. Announce to the team: restart, then "Reset my Salesforce Claude setup" (`sf-setup-reset`). Managed settings are live org-wide since 2026-10-18.
+2. Add per-project settings files to specialist repos, with the one-time install command in each repo's README.
+3. Watch the first automatic sync PR: the `create-pull-request@v8` step hasn't run yet.
