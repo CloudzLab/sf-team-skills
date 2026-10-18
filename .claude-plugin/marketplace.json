@@ -11,7 +11,7 @@
       "name": "sf-platform-extras",
       "source": "./plugins/sf-platform-extras",
       "description": "General Salesforce tools not in an official plugin: official docs lookup, ApexGuru scan, SLDS design system, org shapes and snapshots, data masking, AI model setup, Flow planning, diagrams and extra Agentforce setup. Includes sf-plugin-finder, sf-npx-cleanup and sf-setup-reset.",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "category": "salesforce",
       "keywords": [
         "salesforce",

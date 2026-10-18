@@ -77,7 +77,9 @@ def main():
     leftovers = sorted(k for k in (load(user_settings_path).get("enabledPlugins") or {})
                        if is_salesforce(k) and k not in uninstalling_user)
 
-    print(f"Team core plugins (kept, set by your org): {len(core)}")
+    print(f"Team core plugins (kept, on for everyone through the org settings): {len(core)}")
+    for key in core:
+        print(f"  {key}")
     if uninstalls:
         print(f"\nSalesforce plugins to uninstall ({len(uninstalls)}):")
         for key, scope, project in uninstalls:
