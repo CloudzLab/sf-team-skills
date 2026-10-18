@@ -10,7 +10,7 @@ automatically. Each team skill is assigned to a team plugin by the longest match
 name prefix in config/catalog.json.
 
 Outputs (all generated; do not edit by hand):
-    plugins/<team-plugin>/            plugin manifest, skills, LICENSE.txt, NOTICE
+    plugins/<team-plugin>/            plugin manifest, skills, hooks, LICENSE.txt, NOTICE
     .claude-plugin/marketplace.json   the `cloudzlab` catalog
     managed-settings.json             paste into claude.ai > Admin > Claude Code > Managed settings
     templates/project-settings/*.json per-repo snippets for specialist plugins
@@ -266,6 +266,10 @@ def main():
             for own in owned_here:
                 shutil.copytree(ROOT / own["source"], plugin_dir / "skills" / own["skill"],
                                 ignore=shutil.ignore_patterns(*IGNORED_FILES))
+            hooks_here = [h for h in cfg.get("ownedHooks", []) if h["plugin"] == name]
+            for hooks in hooks_here:
+                shutil.copytree(ROOT / hooks["source"], plugin_dir / "hooks",
+                                ignore=shutil.ignore_patterns(*IGNORED_FILES))
             shutil.copy(ROOT / "LICENSE.txt", plugin_dir / "LICENSE.txt")
             shutil.copy(ROOT / "NOTICE", plugin_dir / "NOTICE")
 
@@ -334,9 +338,10 @@ def main():
                        if p["tier"] == "specialist" and p["name"] in new_state_plugins and p["name"] not in state["retired"]]
         specialists += [(n, upstream_catalog) for n in cfg["officialPlugins"]["specialist"] if n in official]
         for name, catalog in specialists:
+            # Key order matches what `claude plugin install --scope project` writes back, so running it leaves the file unchanged.
             write_json(templates_dir / f"{name}.json", {
-                "extraKnownMarketplaces": {catalog: marketplaces[catalog]},
                 "enabledPlugins": {f"{name}@{catalog}": True},
+                "extraKnownMarketplaces": {catalog: marketplaces[catalog]},
             })
 
         # 4. Diff against the previous run.

@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "sf-field-service@cloudzlab": true
+  },
   "extraKnownMarketplaces": {
     "cloudzlab": {
       "source": {
@@ -7,8 +10,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "sf-field-service@cloudzlab": true
   }
 }

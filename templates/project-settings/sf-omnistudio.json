@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "sf-omnistudio@cloudzlab": true
+  },
   "extraKnownMarketplaces": {
     "cloudzlab": {
       "source": {
@@ -7,8 +10,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "sf-omnistudio@cloudzlab": true
   }
 }

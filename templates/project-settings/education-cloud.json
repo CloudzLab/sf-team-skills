@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "education-cloud@salesforce": true
+  },
   "extraKnownMarketplaces": {
     "salesforce": {
       "source": {
@@ -7,8 +10,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "education-cloud@salesforce": true
   }
 }

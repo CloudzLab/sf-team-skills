@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "salesforce-test-drive@salesforce": true
+  },
   "extraKnownMarketplaces": {
     "salesforce": {
       "source": {
@@ -7,8 +10,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "salesforce-test-drive@salesforce": true
   }
 }

@@ -35,7 +35,7 @@ A plugin is downloaded once per machine. Being *enabled* is what decides whether
 | `experience-cms` | salesforce | Salesforce CMS content for Experience Cloud |
 | `service-engagement` | salesforce | Messaging, web chat, WhatsApp, Email-to-Case, agent-to-human handoff |
 | `service-omni` | salesforce | Omni-Channel routing |
-| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`** and **`sf-npx-cleanup`** |
+| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`**, **`sf-npx-cleanup`** and a startup check for repo plugins that aren't installed |
 
 ### Specialist plugins (off until needed)
 
@@ -91,14 +91,20 @@ Copy the matching file from `templates/project-settings/` into the project's `.c
 
 ```json
 {
+  "enabledPlugins": { "sf-omnistudio@cloudzlab": true },
   "extraKnownMarketplaces": {
     "cloudzlab": { "source": { "source": "github", "repo": "CloudzLab/sf-team-skills" }, "autoUpdate": true }
-  },
-  "enabledPlugins": { "sf-omnistudio@cloudzlab": true }
+  }
 }
 ```
 
-Everyone who opens that repo then gets the plugin, only in that repo. Claude Code may ask them once to trust the folder and install its plugins.
+The file says which plugin the repo needs, but Claude Code doesn't install it from there: it only asks people to trust the folder. Each developer installs it **once per repo**:
+
+```bash
+claude plugin install sf-omnistudio@cloudzlab --scope project
+```
+
+then starts a new session. Until they do, the plugin's skills don't load. Nobody has to remember this: when a session starts in a repo whose settings enable a plugin that isn't installed, `sf-platform-extras` (core) shows a one-line notice with the command, and Claude offers to run it. It never installs anything without asking. Running the command doesn't change the committed file. The check needs Python 3 on the machine and stays silent without it.
 
 ## For the org admin
 
@@ -162,7 +168,7 @@ python3 scripts/sync.py --source ../sf-skills   # or uses an existing checkout
 scripts/validate.sh                             # needs the claude CLI
 ```
 
-To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. Team-written skills live in `templates/skills/`: the finder's template is `sf-plugin-finder.SKILL.md` (the sync fills in its plugin table), and other team skills such as `sf-npx-cleanup/` are listed under `ownedSkills` in the config and copied as they are.
+To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. Team-written skills live in `templates/skills/`: the finder's template is `sf-plugin-finder.SKILL.md` (the sync fills in its plugin table), and other team skills such as `sf-npx-cleanup/` are listed under `ownedSkills` in the config and copied as they are. Team-written hooks live in `templates/hooks/<plugin>/` and are listed under `ownedHooks`; the sync copies them into that plugin's `hooks/` folder.
 
 **One-time GitHub setup.** Enable *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* so the sync can open PRs.
 
