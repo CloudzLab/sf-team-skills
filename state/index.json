@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.2",
-      "hash": "36e0ffbf815127a69779705669edac4b1a7429533398d2b05bee6406e4076658",
+      "version": "1.0.4",
+      "hash": "baa5db9f14de456bc2cafa24db89d00c38f48190858de392cd3667a99eadfba9",
       "skills": [
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",
@@ -26,8 +26,8 @@
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.1",
-      "hash": "b05423b13988651b6ce55e7e7a050a727c361afd613670dc217f5d46c4556bea",
+      "version": "1.0.2",
+      "hash": "0aadde9149a07fcb040666e4c4393c8923854ba6813b9f111d489f2ee884f2e9",
       "skills": [
         "experience-cms-brand-create",
         "experience-content-media-image-generate",
@@ -38,16 +38,16 @@
       ]
     },
     "sf-data360": {
-      "version": "1.0.1",
-      "hash": "5eb44e9f9ec15b6c3b4125b3d49519c27d36b2a90b0125642cf73ae1486e2c09",
+      "version": "1.0.2",
+      "hash": "00d6e13ff46ddb1190316979376b9dfff80809d4ff8542a848306b6fa8d66644",
       "skills": [
         "data360-code-extension-generate",
         "data360-schema-get"
       ]
     },
     "sf-field-service": {
-      "version": "1.0.1",
-      "hash": "f6213711ae611c86cd2cb54a504fec86a7ce0d8e5427e2ec31bd6232176dd4ff",
+      "version": "1.0.2",
+      "hash": "c2e33c1b55bfb4fe24f5667ba3c2bfbf80f8f61120f92d5994962936804fc74d",
       "skills": [
         "field-service-data-capture-form-deployer-configure",
         "field-service-data-capture-form-designer-configure",
@@ -65,8 +65,8 @@
       ]
     },
     "sf-omnistudio": {
-      "version": "1.0.1",
-      "hash": "93c5c56e302485d3ecea43a642c7ef06b4acf599cf0d976515d8d293c2b04789",
+      "version": "1.0.2",
+      "hash": "119b751d46346beaa35c84da411652d11426c102f2b8acbfeef7e6c0d6ab8f7e",
       "skills": [
         "omnistudio-callable-apex-generate",
         "omnistudio-datamapper-generate",
@@ -79,15 +79,15 @@
       ]
     },
     "sf-commerce": {
-      "version": "1.0.1",
-      "hash": "b61cdf49d5971e460e79a929a1ef9e9d6f98303deaa7cf2d80404cba31b516d4",
+      "version": "1.0.2",
+      "hash": "9b25e53f599d8a6440b26761bf2eb02845804d6f7cb4fd58b8bdf0298e9b8e28",
       "skills": [
         "commerce-b2b-store-create"
       ]
     },
     "sf-service-itsm": {
-      "version": "1.0.1",
-      "hash": "88658504490b71827d960857449505cf4df69435c3ec6c04c744dced39a0c483",
+      "version": "1.0.2",
+      "hash": "b67a81f354afe2870533c12c41dbb89858d23096a6f41a3fce415138be972359",
       "skills": [
         "service-agentforce-contact-center-coordinate",
         "service-catalog-template-coordinate",
@@ -123,8 +123,8 @@
       ]
     },
     "sf-consumer-goods": {
-      "version": "1.0.1",
-      "hash": "732bc233551e1ea92a2428688526404715faa5c13b1b53e3ab70d5797ba6d286",
+      "version": "1.0.2",
+      "hash": "f84b23979e9c5261f3d6dc019d97d995e7c35e1c9e5def85033ef2ace3b110a4",
       "skills": [
         "consumer-goods-accruals-datakit-deploy",
         "consumer-goods-promotion-bo-api-deploy",
@@ -136,16 +136,16 @@
       ]
     },
     "sf-crm-analytics": {
-      "version": "1.0.1",
-      "hash": "26007364eafec6d02dd7c92b1c873dd450e678eb7fcd3f24171750e93257578f",
+      "version": "1.0.2",
+      "hash": "44528470665293de976deae807d5045caec7d0d1a166879fbdba3854b871add1",
       "skills": [
         "crm-analytics-wave-generate",
         "tableau-next-asset-create"
       ]
     },
     "sf-industries-misc": {
-      "version": "1.0.1",
-      "hash": "913731edbc3de5411c227afcf86dc803958c4a7b4a3deb089447937bc4562a3e",
+      "version": "1.0.2",
+      "hash": "c61f6865f60bf0266199cb27e07ba1d7faed3b893b9aacfcae0f07a6e81dac9a",
       "skills": [
         "insurance-brokerage-agency-billing-configure",
         "life-sciences-fieldsalesrep-coordinate",

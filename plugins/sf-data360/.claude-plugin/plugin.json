@@ -1,6 +1,6 @@
 {
   "name": "sf-data360",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs.",
   "author": {
     "name": "CloudzLab"

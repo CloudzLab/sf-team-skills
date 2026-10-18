@@ -1,6 +1,6 @@
 {
   "name": "sf-consumer-goods",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Consumer Goods Cloud: store visits and activities, trade promotions, promotion dashboards and data sync.",
   "author": {
     "name": "CloudzLab"

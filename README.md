@@ -35,7 +35,7 @@ A plugin is downloaded once per machine. Being *enabled* is what decides whether
 | `experience-cms` | salesforce | Salesforce CMS content for Experience Cloud |
 | `service-engagement` | salesforce | Messaging, web chat, WhatsApp, Email-to-Case, agent-to-human handoff |
 | `service-omni` | salesforce | Omni-Channel routing |
-| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`**, **`sf-npx-cleanup`** and a startup check for repo plugins that aren't installed |
+| `sf-platform-extras` | cloudzlab | Docs lookup, ApexGuru, SLDS, org shapes and snapshots, data masking, Models API, plus **`sf-plugin-finder`**, **`sf-npx-cleanup`**, **`sf-setup-reset`** and a startup check for repo plugins that aren't installed |
 
 ### Specialist plugins (off until needed)
 
@@ -62,13 +62,13 @@ Some team plugins are defined in `config/catalog.json` but not currently built, 
 
 1. **Sign in to Claude Code with your CloudzLab claude.ai account** (`/login`). Managed settings don't reach sessions that use an API key.
 2. **Restart Claude Code.** The core plugins install themselves.
-3. **Remove old `npx` copies of Salesforce skills** (one time). If you ever ran `npx skills add forcedotcom/sf-skills`, those loose copies never update and can be picked instead of the plugin versions. Ask Claude:
+3. **Reset to the team setup** (one time). The managed settings only add plugins; anything you installed before stays. Ask Claude:
 
-   > Clean up my old npx Salesforce skills
+   > Reset my Salesforce Claude setup
 
-   The `sf-npx-cleanup` skill (in `sf-platform-extras`) previews what it found, asks before removing anything, and backs everything up to `~/.agents/backup-sf-skills-<timestamp>/`. Restart Claude Code afterwards.
+   The `sf-setup-reset` skill (in `sf-platform-extras`) uninstalls Salesforce plugins installed outside the team setup (from the `salesforce` or `cloudzlab` catalogs, or same-named copies from other catalogs), clears old Salesforce entries from `~/.claude/settings.json`, and removes old `npx` copies of Salesforce skills. It previews everything, asks before changing anything, and backs up to `~/.claude/backup-sf-reset-<timestamp>/` (with a reinstall command per removed plugin) and `~/.agents/backup-sf-skills-<timestamp>/`. It keeps the core plugins, plugins a repo enables in its committed settings, and other catalogs' own plugins. Restart Claude Code afterwards, then switch specialists back on only where you need them.
 
-   Without Claude, download the script, read it, then run it:
+   To remove only the `npx` copies, ask "Clean up my old npx Salesforce skills" (`sf-npx-cleanup`). Without Claude, download that script, read it, then run it:
    ```bash
    curl -fsSLo cleanup-sf.sh https://raw.githubusercontent.com/CloudzLab/sf-team-skills/main/plugins/sf-platform-extras/skills/sf-npx-cleanup/scripts/cleanup-npx-salesforce-skills.sh
    bash cleanup-sf.sh            # shows what it would remove
@@ -127,7 +127,7 @@ This repo is public, so developers need no GitHub access or login for the `cloud
 
 ### What happens to existing setups
 
-Nothing is uninstalled or removed. From the Claude Code docs on plugin loading:
+Nothing is uninstalled or removed when the settings arrive; the reset step (`sf-setup-reset`) is what clears the rows below. From the Claude Code docs on plugin loading:
 
 | A developer already has… | When the managed settings arrive |
 |---|---|
@@ -168,7 +168,7 @@ python3 scripts/sync.py --source ../sf-skills   # or uses an existing checkout
 scripts/validate.sh                             # needs the claude CLI
 ```
 
-To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. Team-written skills live in `templates/skills/`: the finder's template is `sf-plugin-finder.SKILL.md` (the sync fills in its plugin table), and other team skills such as `sf-npx-cleanup/` are listed under `ownedSkills` in the config and copied as they are. Team-written hooks live in `templates/hooks/<plugin>/` and are listed under `ownedHooks`; the sync copies them into that plugin's `hooks/` folder.
+To change the grouping, edit `config/catalog.json` (plugins, prefixes, descriptions, finder keywords) and re-run the sync. Don't edit `plugins/`, `.claude-plugin/`, `managed-settings.json` or `templates/project-settings/` by hand; they are regenerated. Team-written skills live in `templates/skills/`: the finder's template is `sf-plugin-finder.SKILL.md` (the sync fills in its plugin table), and other team skills such as `sf-npx-cleanup/` and `sf-setup-reset/` are listed under `ownedSkills` in the config and copied as they are. Team-written hooks live in `templates/hooks/<plugin>/` and are listed under `ownedHooks`; the sync copies them into that plugin's `hooks/` folder.
 
 **One-time GitHub setup.** Enable *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* so the sync can open PRs.
 
@@ -195,4 +195,4 @@ Run `claude plugin details <plugin>` for current numbers.
 
 ## Licence
 
-The skills under `plugins/` (except `sf-plugin-finder` and `sf-npx-cleanup`) are copied unmodified from forcedotcom/sf-skills, © Salesforce, Inc., Apache-2.0. See [LICENSE.txt](LICENSE.txt) and [NOTICE](NOTICE).
+The skills under `plugins/` (except the team-written `sf-plugin-finder`, `sf-npx-cleanup` and `sf-setup-reset`) are copied unmodified from forcedotcom/sf-skills, © Salesforce, Inc., Apache-2.0. See [LICENSE.txt](LICENSE.txt) and [NOTICE](NOTICE).
