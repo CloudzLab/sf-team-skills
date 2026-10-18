@@ -113,19 +113,22 @@ def bump_patch(version):
     return f"{major}.{minor}.{patch + 1}"
 
 
-def build_finder(cfg, team, official, assignments):
+def build_finder(cfg, team, official, assignments, external):
     """Generate the sf-plugin-finder skill from the current catalog state."""
     team_catalog = cfg["catalog"]["name"]
     upstream_catalog = cfg["upstream"]["catalog"]
 
     specialist_team = [p for p in cfg["teamPlugins"] if p["tier"] == "specialist" and team[p["name"]]]
     specialist_official = [n for n in cfg["officialPlugins"]["specialist"] if n in official]
+    specialist_external = [(ext, n) for ext in cfg.get("externalCatalogs", [])
+                           for n in ext["specialist"] if n in external[ext["name"]]]
 
     # Take keywords from each plugin in turn so every plugin gets its most important terms in
     # before the description runs out of room.
     official_keywords = cfg["officialPlugins"].get("specialistKeywords", {})
     keyword_lists = [p["keywords"] for p in specialist_team]
     keyword_lists += [official_keywords.get(n, []) for n in specialist_official]
+    keyword_lists += [ext.get("keywords", {}).get(n, []) for ext, n in specialist_external]
     keywords, seen = [], set()
     for rank in range(max(map(len, keyword_lists), default=0)):
         for keyword_list in keyword_lists:
@@ -156,6 +159,10 @@ def build_finder(cfg, team, official, assignments):
     for name in specialist_official:
         desc = official[name]["description"].replace("|", "/")
         rows.append(f"| `{name}` (Salesforce) | {desc} | {len(official[name]['skills'])} | `{name}@{upstream_catalog}` |")
+    for ext, name in specialist_external:
+        info = external[ext["name"]][name]
+        desc = info["description"].replace("|", "/")
+        rows.append(f"| `{name}` ({ext['label']}) | {desc} | {len(info['skills'])} | `{name}@{ext['name']}` |")
 
     index_lines = [
         "# Skill index",
@@ -171,6 +178,9 @@ def build_finder(cfg, team, official, assignments):
     for name in specialist_official:
         for skill in official[name]["skills"]:
             index_lines.append(f"| `{skill}` | `{name}` (Salesforce) | `{name}@{upstream_catalog}` |")
+    for ext, name in specialist_external:
+        for skill in external[ext["name"]][name]["skills"]:
+            index_lines.append(f"| `{skill}` | `{name}` ({ext['label']}) | `{name}@{ext['name']}` |")
 
     body = FINDER_TEMPLATE.read_text()
     body = body.replace("{{DESCRIPTION}}", json.dumps(description, ensure_ascii=False))
@@ -200,6 +210,15 @@ def main():
         source = Path(tmp)
     source = source.resolve()
 
+    external, external_shas, external_tmps = {}, {}, []
+    for ext in cfg.get("externalCatalogs", []):
+        ext_dir = tempfile.mkdtemp(prefix=f"{ext['name']}-")
+        external_tmps.append(ext_dir)
+        subprocess.run(["git", "clone", "--quiet", "--depth", "1", "--branch", ext.get("ref", "main"),
+                        f"https://github.com/{ext['repo']}.git", ext_dir], check=True)
+        external[ext["name"]] = read_official_plugins(Path(ext_dir))
+        external_shas[ext["name"]] = git("rev-parse", "HEAD", cwd=Path(ext_dir))
+
     try:
         upstream_sha = git("rev-parse", "HEAD", cwd=source)
         root_skills = skill_dirs(source / "skills")
@@ -228,7 +247,7 @@ def main():
         plugins_dir = ROOT / "plugins"
         if plugins_dir.exists():
             shutil.rmtree(plugins_dir)
-        finder_body, finder_index, finder_description = build_finder(cfg, team, official, assignments)
+        finder_body, finder_index, finder_description = build_finder(cfg, team, official, assignments, external)
 
         report_versions, retired_now, retired_removed = [], [], []
         marketplace_plugins, new_state_plugins = [], {}
@@ -323,6 +342,9 @@ def main():
             upstream_catalog: {"source": {"source": "github", "repo": cfg["upstream"]["repo"]}, "autoUpdate": True},
             team_catalog: {"source": {"source": "github", "repo": cfg["catalog"]["repo"]}, "autoUpdate": True},
         }
+        # External catalogs are registered for everyone so their specialist plugins install by name; none is enabled.
+        for ext in cfg.get("externalCatalogs", []):
+            marketplaces[ext["name"]] = {"source": {"source": "github", "repo": ext["repo"]}, "autoUpdate": True}
         enabled = {f"{n}@{upstream_catalog}": True for n in cfg["officialPlugins"]["core"] if n in official}
         enabled.update({f"{p['name']}@{team_catalog}": True for p in cfg["teamPlugins"]
                         if p["tier"] == "core" and p["name"] in new_state_plugins})
@@ -337,6 +359,8 @@ def main():
         specialists = [(p["name"], team_catalog) for p in cfg["teamPlugins"]
                        if p["tier"] == "specialist" and p["name"] in new_state_plugins and p["name"] not in state["retired"]]
         specialists += [(n, upstream_catalog) for n in cfg["officialPlugins"]["specialist"] if n in official]
+        specialists += [(n, ext["name"]) for ext in cfg.get("externalCatalogs", []) for n in ext["specialist"]
+                        if n in external[ext["name"]]]
         for name, catalog in specialists:
             # Key order matches what `claude plugin install --scope project` writes back, so running it leaves the file unchanged.
             write_json(templates_dir / f"{name}.json", {
@@ -357,19 +381,26 @@ def main():
         unclassified_official = sorted(n for n in official if n not in configured)
         missing_official = sorted(n for n in configured if n not in official)
         new_official = sorted(n for n in official if state.get("official") and n not in state["official"])
+        unlisted_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
+                             for n in external[ext["name"]] if n not in ext["specialist"]]
+        missing_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
+                            for n in ext["specialist"] if n not in external[ext["name"]]]
 
         state.update({
             "upstreamSha": upstream_sha,
             "plugins": new_state_plugins,
             "assignments": assignments,
             "official": {n: info["skills"] for n, info in official.items()},
+            "external": {name: {"sha": external_shas[name], "plugins": sorted(plugins)} for name, plugins in external.items()},
         })
         write_json(STATE, state)
 
         # 5. Report.
         first_run = not prev_assign
         lines = [f"# Salesforce skills sync: {today.isoformat()}", "",
-                 f"Upstream: `{cfg['upstream']['repo']}` @ `{upstream_sha[:12]}`", "",
+                 f"Upstream: `{cfg['upstream']['repo']}` @ `{upstream_sha[:12]}`  "]
+        lines += [f"External: `{ext['repo']}` @ `{external_shas[ext['name']][:12]}`  " for ext in cfg.get("externalCatalogs", [])]
+        lines += ["",
                  f"- Upstream skills: {len(root_skills)}",
                  f"- In official Salesforce plugins: {len(official_skill_owner)} across {len(official)} plugins",
                  f"- In team plugins: {len(assignments)} across {sum(1 for n in new_state_plugins if new_state_plugins[n]['skills'])} plugins",
@@ -389,6 +420,12 @@ def main():
         if missing_official:
             actions.append("**Official plugin(s) in config no longer exist upstream** (renamed or removed?): "
                            + ", ".join(f"`{n}`" for n in missing_official))
+        if unlisted_external:
+            actions.append("**New plugin(s) in an external catalog:** add them to `externalCatalogs[].specialist` in `config/catalog.json` if the team should find them: "
+                           + ", ".join(f"`{n}@{c}`" for c, n in unlisted_external))
+        if missing_external:
+            actions.append("**External catalog plugin(s) in config no longer exist** (renamed or removed?): "
+                           + ", ".join(f"`{n}@{c}`" for c, n in missing_external))
         if moved_to_official:
             owners = sorted({o for _, _, o in moved_to_official})
             not_core = [o for o in owners if o not in cfg["officialPlugins"]["core"]]
@@ -430,8 +467,9 @@ def main():
         (ROOT / "SYNC_REPORT.md").write_text("\n".join(lines))
         print("\n".join(lines))
     finally:
-        if tmp:
-            shutil.rmtree(tmp, ignore_errors=True)
+        for path in [tmp] + external_tmps:
+            if path:
+                shutil.rmtree(path, ignore_errors=True)
 
 
 if __name__ == "__main__":

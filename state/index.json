@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.4",
-      "hash": "baa5db9f14de456bc2cafa24db89d00c38f48190858de392cd3667a99eadfba9",
+      "version": "1.0.5",
+      "hash": "72ffbb8826a9b055ff6b7a4c26603965ea48a61fc52f8076d30486252177011e",
       "skills": [
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",
@@ -465,5 +465,20 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "72d9f5f43614c1de9596913d887685d069ec9a73"
+  "upstreamSha": "72d9f5f43614c1de9596913d887685d069ec9a73",
+  "external": {
+    "b2c-developer-tooling": {
+      "sha": "4f848fcb58a26a20fa88cc340a48bf9e3d276a51",
+      "plugins": [
+        "b2c",
+        "b2c-cli",
+        "b2c-dx-mcp",
+        "b2c-ops",
+        "b2c-python-sdk",
+        "figma-to-sfnext-pagedesigner",
+        "storefront-next",
+        "storefront-next-figma"
+      ]
+    }
+  }
 }

@@ -1,6 +1,6 @@
 ---
 name: sf-setup-reset
-description: "Resets the developer's Salesforce Claude Code setup to the team baseline: uninstalls Salesforce plugins installed outside the team setup (from the salesforce or cloudzlab catalogs, or same-named copies from other catalogs), clears old Salesforce entries from their user settings, and removes old npx copies of Salesforce skills. Everything is backed up first; the org's core plugins stay. TRIGGER when the user asks to reset, start fresh, do a clean or fresh install, or match the team setup for Salesforce plugins or skills. DO NOT TRIGGER for removing only npx skills (use sf-npx-cleanup), for one specific plugin (use /plugin), or for non-Salesforce plugins."
+description: "Resets the developer's Salesforce Claude Code setup to the team baseline: uninstalls Salesforce plugins installed outside the team setup (from the team's catalogs: salesforce, cloudzlab, b2c-developer-tooling; or same-named copies from other catalogs), clears old Salesforce entries from their user settings, and removes old npx copies of Salesforce skills. Everything is backed up first; the org's core plugins stay. TRIGGER when the user asks to reset, start fresh, do a clean or fresh install, or match the team setup for Salesforce plugins or skills. DO NOT TRIGGER for removing only npx skills (use sf-npx-cleanup), for one specific plugin (use /plugin), or for non-Salesforce plugins."
 ---
 
 # Reset the Salesforce setup to the team baseline
@@ -8,11 +8,11 @@ description: "Resets the developer's Salesforce Claude Code setup to the team ba
 The org's managed settings switch on the team's core Salesforce plugins for everyone, but they only add things: plugins a developer installed earlier stay. This skill removes those, so the machine matches the team setup. Afterwards the developer switches specialist plugins back on only where they need them.
 
 What it changes:
-- **Uninstalls** Salesforce plugins installed for the user (`user` scope) or for one repo (`local` scope): anything from the `salesforce` or `cloudzlab` catalogs, and same-named copies from other catalogs (e.g. `agentforce-adlc` from the Claude directory).
+- **Uninstalls** Salesforce plugins installed for the user (`user` scope) or for one repo (`local` scope): anything from the catalogs the org's settings register (`salesforce`, `cloudzlab`, `b2c-developer-tooling`), and same-named copies from other catalogs (e.g. `agentforce-adlc` from the Claude directory).
 - **Clears old entries** for Salesforce plugins from `~/.claude/settings.json`. Core plugins stay on through the org settings.
 - **Removes npx copies** of Salesforce skills, using the `sf-npx-cleanup` script.
 
-What it leaves alone: the core plugins, plugins a repo enables in its committed settings (`project` scope), other catalogs' own plugins (e.g. B2C Commerce tooling, Agentforce Mobile SDK), and downloaded plugin files.
+What it leaves alone: the core plugins, plugins a repo enables in its committed settings (`project` scope), other catalogs' own plugins (e.g. the Agentforce Mobile SDK), and downloaded plugin files.
 
 The script is in this skill's base directory at `scripts/reset-salesforce-setup.py`. Run it with `python3` and its full path.
 

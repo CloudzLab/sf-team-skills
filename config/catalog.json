@@ -185,6 +185,35 @@
       "source": "templates/skills/sf-setup-reset"
     }
   ],
+  "externalCatalogs": [
+    {
+      "$comment": "Other official Salesforce catalogs. Registered in managed settings for everyone (nothing enabled); their plugins listed here are specialists the finder knows about.",
+      "name": "b2c-developer-tooling",
+      "repo": "SalesforceCommerceCloud/b2c-developer-tooling",
+      "ref": "main",
+      "label": "Salesforce B2C Commerce",
+      "specialist": [
+        "b2c",
+        "b2c-cli",
+        "storefront-next",
+        "b2c-ops",
+        "b2c-dx-mcp",
+        "storefront-next-figma",
+        "figma-to-sfnext-pagedesigner",
+        "b2c-python-sdk"
+      ],
+      "keywords": {
+        "b2c": ["B2C Commerce", "SFCC", "SFRA", "cartridge", "ISML", "Demandware", "Business Manager"],
+        "b2c-cli": ["B2C CLI", "code version", "WebDAV", "on-demand sandbox", "Managed Runtime"],
+        "storefront-next": ["Storefront Next", "composable storefront", "PWA Kit"],
+        "b2c-ops": ["B2C job health", "checkout failure", "eCDN"],
+        "b2c-dx-mcp": ["B2C MCP", "SCAPI", "OCAPI"],
+        "storefront-next-figma": ["Storefront Next Figma kit"],
+        "figma-to-sfnext-pagedesigner": ["Figma to Page Designer"],
+        "b2c-python-sdk": ["B2C Python SDK"]
+      }
+    }
+  ],
   "ownedHooks": [
     {
       "$comment": "Team-written hooks copied verbatim into a team plugin's hooks/ folder.",

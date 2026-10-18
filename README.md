@@ -4,7 +4,8 @@ One setup for every CloudzLab developer, on every machine and in every Salesforc
 
 - **Salesforce's official plugins** (catalog `salesforce`) provide the core skills.
 - **This repo** (catalog `cloudzlab`) packages the Salesforce skills that Salesforce publishes in [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) but doesn't ship in any official plugin. It groups them into team plugins and keeps them in sync automatically.
-- **The claude.ai admin console** switches the core plugins on for everyone. Specialist plugins stay off until a project or developer needs them.
+- **Salesforce's B2C Commerce catalog** (`b2c-developer-tooling`, from [SalesforceCommerceCloud/b2c-developer-tooling](https://github.com/SalesforceCommerceCloud/b2c-developer-tooling)) provides specialist plugins for Commerce Cloud (SFCC) work.
+- **The claude.ai admin console** switches the core plugins on for everyone and registers all three catalogs. Specialist plugins stay off until a project or developer needs them.
 
 ## How it works
 
@@ -55,6 +56,15 @@ A plugin is downloaded once per machine. Being *enabled* is what decides whether
 | `dx-isv-partner` | salesforce | ISV and partner operations |
 | `education-cloud` | salesforce | Education Cloud |
 | `salesforce-test-drive` | salesforce | Guided demo builds |
+| `b2c` | b2c-developer-tooling | B2C Commerce (SFCC) development: SFRA cartridges, controllers, ISML, hooks, custom APIs, Page Designer |
+| `b2c-cli` | b2c-developer-tooling | B2C CLI: code deploys, jobs, logs, sandboxes, WebDAV, SLAS, Managed Runtime |
+| `storefront-next` | b2c-developer-tooling | Storefront Next (React 19 storefronts) |
+| `b2c-ops` | b2c-developer-tooling | Operator runbooks: job health, checkout failures, eCDN, incident triage |
+| `b2c-dx-mcp` | b2c-developer-tooling | MCP server: B2C docs, workflows and Commerce API tools |
+| `storefront-next-figma`, `figma-to-sfnext-pagedesigner` | b2c-developer-tooling | Figma design kit to Storefront Next (needs the Figma MCP server) |
+| `b2c-python-sdk` | b2c-developer-tooling | B2C Commerce Python SDK |
+
+B2C Commerce (Commerce Cloud, formerly Demandware) is a different product from B2B/D2C Commerce on the core platform (`commerce-b2b`, `sf-commerce`). The B2C catalog is maintained by Salesforce's Commerce Cloud team and listed in `externalCatalogs` in `config/catalog.json`; the sync reads its plugin list, so new B2C plugins show up in the sync PR.
 
 Some team plugins are defined in `config/catalog.json` but not currently built, because Salesforce doesn't publish their skills right now: `sf-fsc`, `sf-health-cloud`, `sf-industries` and `sf-automotive`. They appear automatically if Salesforce publishes those skills. Each sync's PR lists the current skill counts.
 
@@ -66,7 +76,7 @@ Some team plugins are defined in `config/catalog.json` but not currently built, 
 
    > Reset my Salesforce Claude setup
 
-   The `sf-setup-reset` skill (in `sf-platform-extras`) uninstalls Salesforce plugins installed outside the team setup (from the `salesforce` or `cloudzlab` catalogs, or same-named copies from other catalogs), clears old Salesforce entries from `~/.claude/settings.json`, and removes old `npx` copies of Salesforce skills. It previews everything, asks before changing anything, and backs up to `~/.claude/backup-sf-reset-<timestamp>/` (with a reinstall command per removed plugin) and `~/.agents/backup-sf-skills-<timestamp>/`. It keeps the core plugins, plugins a repo enables in its committed settings, and other catalogs' own plugins. Restart Claude Code afterwards, then switch specialists back on only where you need them.
+   The `sf-setup-reset` skill (in `sf-platform-extras`) uninstalls Salesforce plugins installed outside the team setup (from the team's catalogs, `salesforce`, `cloudzlab` and `b2c-developer-tooling`, or same-named copies from other catalogs), clears old Salesforce entries from `~/.claude/settings.json`, and removes old `npx` copies of Salesforce skills. It previews everything, asks before changing anything, and backs up to `~/.claude/backup-sf-reset-<timestamp>/` (with a reinstall command per removed plugin) and `~/.agents/backup-sf-skills-<timestamp>/`. It keeps the core plugins, plugins a repo enables in its committed settings, and other catalogs' own plugins. Restart Claude Code afterwards, then switch specialists back on only where you need them.
 
    To remove only the `npx` copies, ask "Clean up my old npx Salesforce skills" (`sf-npx-cleanup`). Without Claude, download that script, read it, then run it:
    ```bash
@@ -75,7 +85,7 @@ Some team plugins are defined in `config/catalog.json` but not currently built, 
    bash cleanup-sf.sh --apply    # backs up, then removes
    ```
 
-When you need a specialist area, just ask. `sf-plugin-finder` recognises the product (e.g. "set up an OmniScript") and offers to switch on the right plugin. You can also run `/plugin` and browse the `cloudzlab` and `salesforce` catalogs. When switching one on, choose:
+When you need a specialist area, just ask. `sf-plugin-finder` recognises the product (e.g. "set up an OmniScript") and offers to switch on the right plugin. You can also run `/plugin` and browse the `cloudzlab`, `salesforce` and `b2c-developer-tooling` catalogs. When switching one on, choose:
 
 | Scope | Command flag | Effect |
 |---|---|---|

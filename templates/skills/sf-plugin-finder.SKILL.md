@@ -12,6 +12,7 @@ The team's Salesforce skills are split into **core** plugins (on for everyone) a
 ## Steps
 
 1. **Find the plugin.** Match the request against the table below. For a specific skill name or a narrower term, search `references/skill-index.md`, which lists every specialist skill and its plugin.
+   - **B2C Commerce** (Commerce Cloud, formerly Demandware: SFRA, cartridges, ISML, Storefront Next) and **B2B/D2C Commerce** on the core Salesforce platform are different products with different plugins. If it's unclear which one they mean, ask.
    - If nothing matches, say so plainly. Do not guess a plugin or invent a skill name. Suggest asking the catalog maintainer, since the skill may not exist yet.
 2. **Check whether it is already on.** Run `claude plugin list` and look for the plugin.
    - **Enabled:** its skills are available; continue the task with them. If the developer only just switched it on, they may need to restart Claude Code first.
@@ -24,7 +25,7 @@ The team's Salesforce skills are split into **core** plugins (on for everyone) a
    ```bash
    claude plugin install <plugin>@<catalog> --scope <local|project|user>
    ```
-   Use the catalog from the table: `{{TEAM_CATALOG}}` for team plugins, `{{UPSTREAM_CATALOG}}` for Salesforce's own.
+   Use the exact `<plugin>@<catalog>` from the table's Install column: `{{TEAM_CATALOG}}` for team plugins, `{{UPSTREAM_CATALOG}}` for Salesforce's own, and other official Salesforce catalogs as listed. If the install says the catalog is unknown, the team settings haven't reached this machine yet: ask them to restart Claude Code and try again.
 5. **Tell them to restart Claude Code** so the new skills load, then continue the task.
 
 Never install without the developer's agreement, and never change core plugins: those are managed by the team admin.

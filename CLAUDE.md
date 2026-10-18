@@ -7,7 +7,7 @@ CloudzLab's Claude Code plugin catalog (`cloudzlab`) for Salesforce work. It pac
 Two levels, decided with the user on 2026-10-15:
 
 - **Core**: on for everyone via claude.ai server-managed settings (`managed-settings.json`). 14 official `@salesforce` plugins + `sf-platform-extras@cloudzlab`.
-- **Specialist**: everything else. Enabled per repo (`.claude/settings.json`, templates in `templates/project-settings/`) or by the developer via `/plugin`, guided by the `sf-plugin-finder` skill.
+- **Specialist**: everything else, including all 8 plugins of Salesforce's B2C Commerce catalog `b2c-developer-tooling` (an `externalCatalogs` entry: registered in managed settings with nothing enabled; the sync reads its plugin list for templates and the finder). Enabled per repo (`.claude/settings.json`, templates in `templates/project-settings/`) or by the developer via `/plugin`, guided by the `sf-plugin-finder` skill.
 
 Team skills are always recomputed as *skills in sf-skills/skills/ minus skills inside any released official plugin* (released = listed in upstream `.claude-plugin/marketplace.json`), then grouped by longest name prefix. Skills Salesforce moves into an official plugin drop out automatically.
 
@@ -15,7 +15,7 @@ Team skills are always recomputed as *skills in sf-skills/skills/ minus skills i
 
 | Path | Edit? | Purpose |
 |---|---|---|
-| `config/catalog.json` | **Yes** | Source of truth: team plugins, prefixes, tiers, descriptions, finder keywords, official core/specialist lists, `ownedSkills` |
+| `config/catalog.json` | **Yes** | Source of truth: team plugins, prefixes, tiers, descriptions, finder keywords, official core/specialist lists, `externalCatalogs`, `ownedSkills`, `ownedHooks` |
 | `templates/skills/` | **Yes** | Team-written skills: `sf-plugin-finder.SKILL.md` (sync fills in `{{PLUGIN_TABLE}}` etc.) and `sf-npx-cleanup/`, `sf-setup-reset/` (copied verbatim) |
 | `templates/hooks/sf-platform-extras/` | **Yes** | Team-written SessionStart hook (`ownedHooks`): notices plugins a repo's settings enable that aren't installed, and gives the install command |
 | `scripts/sync.py` | Yes | Regenerates everything below and writes `SYNC_REPORT.md` (PR body, gitignored) |
@@ -61,6 +61,6 @@ scripts/validate.sh                              # needs the claude CLI
 Done: catalog built and pushed (10 team plugins, 101 skills + 2 team skills), repo public, Actions allowed to open PRs, actions on Node 24 versions (PR #1), `sf-npx-cleanup` skill (PR #2), rollout docs (PR #3). Validation and a manual sync run pass on GitHub. Sandbox pilot (2026-10-18): core install, finder and cleanup triggering verified; repo settings found not to install plugins, so the missing-plugin hook was added (PR #5). Real-machine pilot (2026-10-18): managed settings pasted in claude.ai and delivered identically; 15 core plugins installed with scope `managed`; the `cloudzlab` catalog and `sf-platform-extras` arrived on the first restart (install record written on the next start); self-added catalogs intact; missing-plugin notice shows under the header at startup. Team guide updated. `sf-setup-reset` skill added so developers can reset to the team baseline.
 
 Next:
-1. Announce to the team: restart, then "Reset my Salesforce Claude setup" (`sf-setup-reset`). Managed settings are live org-wide since 2026-10-18.
+1. Org Owner re-pastes `managed-settings.json` (now registers `b2c-developer-tooling`). Then announce to the team: restart, then "Reset my Salesforce Claude setup" (`sf-setup-reset`). Managed settings are live org-wide since 2026-10-18.
 2. Add per-project settings files to specialist repos, with the one-time install command in each repo's README.
 3. Watch the first automatic sync PR: the `create-pull-request@v8` step hasn't run yet.

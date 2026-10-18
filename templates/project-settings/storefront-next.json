@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "storefront-next@b2c-developer-tooling": true
+  },
+  "extraKnownMarketplaces": {
+    "b2c-developer-tooling": {
+      "source": {
+        "source": "github",
+        "repo": "SalesforceCommerceCloud/b2c-developer-tooling"
+      },
+      "autoUpdate": true
+    }
+  }
+}

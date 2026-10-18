@@ -6,8 +6,9 @@ org's managed settings remain, then runs the npx cleanup. Everything it changes 
     python3 reset-salesforce-setup.py            show what would change
     python3 reset-salesforce-setup.py --apply    back up, then change
 
-"Salesforce plugin" means any plugin from the `salesforce` or `cloudzlab` catalogs, plus a plugin
-with the same name from another catalog (for example agentforce-adlc from the Claude directory).
+"Salesforce plugin" means any plugin from a team catalog (the catalogs the org's managed settings
+register: `salesforce`, `cloudzlab`, `b2c-developer-tooling`, ...), plus a plugin with the same name
+from another catalog (for example agentforce-adlc from the Claude directory).
 It never touches project-scope installs (those come from a repo's committed settings), other
 catalogs' own plugins, or downloaded plugin files.
 """
@@ -19,7 +20,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-TEAM_CATALOGS = ("salesforce", "cloudzlab")
+FALLBACK_CATALOGS = ("salesforce", "cloudzlab")
 MANAGED_FILES = (
     Path("/Library/Application Support/ClaudeCode/managed-settings.json"),
     Path("/etc/claude-code/managed-settings.json"),
@@ -40,23 +41,26 @@ def main():
     user_settings_path = config / "settings.json"
     installed_path = config / "plugins" / "installed_plugins.json"
 
-    managed = {}
+    managed, team_catalogs = {}, set()
     for path in (config / "remote-settings.json",) + MANAGED_FILES:
-        managed.update({k: v for k, v in (load(path).get("enabledPlugins") or {}).items() if v is True})
-    core = sorted(k for k in managed if k.rsplit("@", 1)[-1] in TEAM_CATALOGS)
+        settings = load(path)
+        managed.update({k: v for k, v in (settings.get("enabledPlugins") or {}).items() if v is True})
+        team_catalogs.update(settings.get("extraKnownMarketplaces") or {})
+    team_catalogs = tuple(sorted(team_catalogs)) or FALLBACK_CATALOGS
+    core = sorted(k for k in managed if k.rsplit("@", 1)[-1] in team_catalogs)
     if not core:
         print("The team settings haven't reached this machine yet, so there is no baseline to reset to.")
         print("Sign in with your claude.ai account (/login), restart Claude Code, and run this again.")
         sys.exit(2)
 
     team_names = set()
-    for catalog in TEAM_CATALOGS:
+    for catalog in team_catalogs:
         manifest = load(config / "plugins" / "marketplaces" / catalog / ".claude-plugin" / "marketplace.json")
         team_names.update(p.get("name") for p in manifest.get("plugins") or [])
 
     def is_salesforce(key):
         name, _, catalog = key.rpartition("@")
-        return catalog in TEAM_CATALOGS or name in team_names
+        return catalog in team_catalogs or name in team_names
 
     uninstalls, kept_project = [], []
     for key, entries in sorted((load(installed_path).get("plugins") or {}).items()):
