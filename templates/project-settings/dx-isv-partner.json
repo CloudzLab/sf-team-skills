@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "dx-isv-partner@salesforce": true
+  },
   "extraKnownMarketplaces": {
     "salesforce": {
       "source": {
@@ -7,8 +10,5 @@
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "dx-isv-partner@salesforce": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.1",
-      "hash": "aedeaf8c0832a4ab8af53b63f23caa95bff39586ce1ddc998a7bcec1bc6a672e",
+      "version": "1.0.2",
+      "hash": "36e0ffbf815127a69779705669edac4b1a7429533398d2b05bee6406e4076658",
       "skills": [
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",

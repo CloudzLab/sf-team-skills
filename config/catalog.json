@@ -179,5 +179,12 @@
       "skill": "sf-npx-cleanup",
       "source": "templates/skills/sf-npx-cleanup"
     }
+  ],
+  "ownedHooks": [
+    {
+      "$comment": "Team-written hooks copied verbatim into a team plugin's hooks/ folder.",
+      "plugin": "sf-platform-extras",
+      "source": "templates/hooks/sf-platform-extras"
+    }
   ]
 }
