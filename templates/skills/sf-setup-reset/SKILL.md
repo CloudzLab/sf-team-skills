@@ -24,13 +24,14 @@ The script is in this skill's base directory at `scripts/reset-salesforce-setup.
    ```
    - If it says the team settings haven't reached this machine, tell the developer to sign in with their claude.ai account (`/login`), restart Claude Code and try again. Stop there.
    - If it finds nothing to remove and no npx skills, tell them their setup already matches the team baseline and stop.
+   - The output starts with the team's **core plugins** by name. They are on for everyone through the org settings and the reset never removes them. Never tell the developer to check or reinstall a plugin on that list.
 2. **Show the developer what will change:** the plugins to uninstall, the old settings entries, and how many npx skills. Point out any plugin they may still want (a specialist they use daily) and say they can switch it back on afterwards with `claude plugin install <plugin> --scope local` or by asking. Say that everything is backed up first.
 3. **Ask for confirmation.** Do not apply without a clear yes.
 4. **Apply.**
    ```bash
    python3 "<this skill's base directory>/scripts/reset-salesforce-setup.py" --apply
    ```
-5. **Report the result** in a few lines: what was removed, the backup folders from the output, and tell them to **restart Claude Code**.
+5. **Report the result** in a few lines (if the developer relies on a plugin from the core list, say plainly that it stays on): what was removed, the backup folders from the output, and tell them to **restart Claude Code**.
    - If a step failed, show its output and the backup path. Do not remove anything by other means without asking.
 
 ## Undo
