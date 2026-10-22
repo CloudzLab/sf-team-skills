@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.6",
-      "hash": "f6168239121ad911e13d0d08167c3676d5149626c24b5b18014a8ae5c9411462",
+      "version": "1.0.7",
+      "hash": "76e82135c15b2b91d5866e4ca65c8e34d0f2e6d546a0f65e498ba4a5879e983a",
       "skills": [
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",
@@ -22,16 +22,19 @@
         "platform-docs-get",
         "platform-dsar-policy-manage",
         "platform-models-api-configure",
-        "platform-policy-rule-generate"
+        "platform-policy-rule-generate",
+        "platform-role-hierarchy-apply"
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.2",
-      "hash": "0aadde9149a07fcb040666e4c4393c8923854ba6813b9f111d489f2ee884f2e9",
+      "version": "1.0.3",
+      "hash": "fc9abd54c9a3b2fb4dfb3b26ddfb36761f2223caebc0d5cde9129de96fcf0fdb",
       "skills": [
         "experience-cms-brand-create",
         "experience-content-media-image-generate",
         "experience-design-validate",
+        "experience-lwc-widget-assess",
+        "experience-lwc-widget-migrate",
         "experience-lwr-site-generate",
         "experience-portal-create",
         "experience-search-coordinate"
@@ -86,8 +89,8 @@
       ]
     },
     "sf-service-itsm": {
-      "version": "1.0.2",
-      "hash": "b67a81f354afe2870533c12c41dbb89858d23096a6f41a3fce415138be972359",
+      "version": "1.0.3",
+      "hash": "12a4b9561ae6629b2c13e775573faab9d564c9d015c08332b146105bb846a8ad",
       "skills": [
         "service-agentforce-contact-center-coordinate",
         "service-catalog-template-coordinate",
@@ -387,6 +390,8 @@
     "experience-cms-brand-create": "sf-experience-extras",
     "experience-content-media-image-generate": "sf-experience-extras",
     "experience-design-validate": "sf-experience-extras",
+    "experience-lwc-widget-assess": "sf-experience-extras",
+    "experience-lwc-widget-migrate": "sf-experience-extras",
     "experience-lwr-site-generate": "sf-experience-extras",
     "experience-portal-create": "sf-experience-extras",
     "experience-search-coordinate": "sf-experience-extras",
@@ -429,6 +434,7 @@
     "platform-dsar-policy-manage": "sf-platform-extras",
     "platform-models-api-configure": "sf-platform-extras",
     "platform-policy-rule-generate": "sf-platform-extras",
+    "platform-role-hierarchy-apply": "sf-platform-extras",
     "sales-agentforce-pipeline-management-configure": "sf-industries-misc",
     "sales-call-scoring-configure": "sf-industries-misc",
     "service-agentforce-contact-center-coordinate": "sf-service-itsm",
@@ -465,10 +471,10 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "72d9f5f43614c1de9596913d887685d069ec9a73",
+  "upstreamSha": "e44b5001dbd6faf912387e8633a192b764d77fed",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "4f848fcb58a26a20fa88cc340a48bf9e3d276a51",
+      "sha": "2854238fe1c0441cb9c09ffa31f496afd7223d94",
       "plugins": [
         "b2c",
         "b2c-cli",

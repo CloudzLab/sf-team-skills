@@ -18,6 +18,8 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `experience-cms-brand-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-content-media-image-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-design-validate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-assess` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-migrate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-lwr-site-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-portal-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-search-coordinate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
