@@ -34,7 +34,7 @@ Never install without the developer's agreement, and never change core plugins: 
 
 | Plugin | Covers | Skills | Install |
 |---|---|---|---|
-| `sf-experience-extras` | Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup. | 6 | `sf-experience-extras@cloudzlab` |
+| `sf-experience-extras` | Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup. | 8 | `sf-experience-extras@cloudzlab` |
 | `sf-data360` | Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs. | 2 | `sf-data360@cloudzlab` |
 | `sf-field-service` | Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs. | 13 | `sf-field-service@cloudzlab` |
 | `sf-omnistudio` | OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment. | 8 | `sf-omnistudio@cloudzlab` |
