@@ -5,6 +5,7 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | Skill | Plugin | Install |
 |---|---|---|
 | `commerce-b2b-store-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
+| `commerce-react-storefront-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
 | `consumer-goods-accruals-datakit-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
 | `consumer-goods-promotion-bo-api-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
 | `consumer-goods-rtr-datacloud-export-configure` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
@@ -18,6 +19,8 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `experience-cms-brand-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-content-media-image-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-design-validate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-assess` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-migrate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-lwr-site-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-portal-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-search-coordinate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
@@ -133,12 +136,14 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `b2c-logs` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-metrics` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-mrt` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-replication` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sandbox` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-custom` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-schemas` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-site-import-export` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sites` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-slas` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-storefronts` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-webdav` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `sfnext-accessibility` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-analytics-consent` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
@@ -166,8 +171,10 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `sfnext-theming` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `b2c-checkout-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-edge-traffic-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
+| `b2c-integration-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-job-health` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-order-failure-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
+| `b2c-performance-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-production-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `sfnext-create-figma-kit` | `storefront-next-figma` (Salesforce B2C Commerce) | `storefront-next-figma@b2c-developer-tooling` |
 | `figma-to-sfnext-pagedesigner` | `figma-to-sfnext-pagedesigner` (Salesforce B2C Commerce) | `figma-to-sfnext-pagedesigner@b2c-developer-tooling` |

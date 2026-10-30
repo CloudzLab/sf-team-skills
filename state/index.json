@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.6",
-      "hash": "f6168239121ad911e13d0d08167c3676d5149626c24b5b18014a8ae5c9411462",
+      "version": "1.0.7",
+      "hash": "32cfa52a4b6dd95c96ea6beabc44a97dc8800e34811a72fd96c35bdba0934a13",
       "skills": [
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",
@@ -15,23 +15,30 @@
         "dx-org-analyze",
         "dx-org-shape-manage",
         "dx-org-snapshot-manage",
+        "dx-packaging-move-to-2gp-migrate",
+        "dx-scratch-def-configure",
         "external-diagram-mermaid-generate",
         "platform-agenticsetup-categories-get",
         "platform-datamask-run",
         "platform-dataspace-access-configure",
         "platform-docs-get",
         "platform-dsar-policy-manage",
+        "platform-metadata-discovery-get",
+        "platform-metadata-grounding-get",
         "platform-models-api-configure",
-        "platform-policy-rule-generate"
+        "platform-policy-rule-generate",
+        "platform-role-hierarchy-apply"
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.2",
-      "hash": "0aadde9149a07fcb040666e4c4393c8923854ba6813b9f111d489f2ee884f2e9",
+      "version": "1.0.3",
+      "hash": "0fc432b2a50c071d2d57ea09a01da7308d7d4cadf8797a7566065dfb2e0ab13b",
       "skills": [
         "experience-cms-brand-create",
         "experience-content-media-image-generate",
         "experience-design-validate",
+        "experience-lwc-widget-assess",
+        "experience-lwc-widget-migrate",
         "experience-lwr-site-generate",
         "experience-portal-create",
         "experience-search-coordinate"
@@ -46,8 +53,8 @@
       ]
     },
     "sf-field-service": {
-      "version": "1.0.2",
-      "hash": "c2e33c1b55bfb4fe24f5667ba3c2bfbf80f8f61120f92d5994962936804fc74d",
+      "version": "1.0.3",
+      "hash": "6d43134af3d1de642baf58cef7510f0a2b89f73dc28f2fcb92d2b7a49480106f",
       "skills": [
         "field-service-data-capture-form-deployer-configure",
         "field-service-data-capture-form-designer-configure",
@@ -79,15 +86,16 @@
       ]
     },
     "sf-commerce": {
-      "version": "1.0.2",
-      "hash": "9b25e53f599d8a6440b26761bf2eb02845804d6f7cb4fd58b8bdf0298e9b8e28",
+      "version": "1.0.3",
+      "hash": "ba550fa87df4ec8866dcbd6043d2c95bb885fae2aca7fb2680a6bd9c129a8f6b",
       "skills": [
-        "commerce-b2b-store-create"
+        "commerce-b2b-store-create",
+        "commerce-react-storefront-create"
       ]
     },
     "sf-service-itsm": {
-      "version": "1.0.2",
-      "hash": "b67a81f354afe2870533c12c41dbb89858d23096a6f41a3fce415138be972359",
+      "version": "1.0.3",
+      "hash": "9114db65b0666e02d7070aac2e532da35daaaccd208bd26ed5b71d4d13267dc6",
       "skills": [
         "service-agentforce-contact-center-coordinate",
         "service-catalog-template-coordinate",
@@ -123,8 +131,8 @@
       ]
     },
     "sf-consumer-goods": {
-      "version": "1.0.2",
-      "hash": "f84b23979e9c5261f3d6dc019d97d995e7c35e1c9e5def85033ef2ace3b110a4",
+      "version": "1.0.3",
+      "hash": "ecbde63d9f094951a4cb11568f623d18669fbe13e6de1e65b7abaeb167a575cd",
       "skills": [
         "consumer-goods-accruals-datakit-deploy",
         "consumer-goods-promotion-bo-api-deploy",
@@ -144,8 +152,8 @@
       ]
     },
     "sf-industries-misc": {
-      "version": "1.0.2",
-      "hash": "c61f6865f60bf0266199cb27e07ba1d7faed3b893b9aacfcae0f07a6e81dac9a",
+      "version": "1.0.3",
+      "hash": "06cb5f90a3342829055036350b2fe9c845ed4695ebcb1f7dd725f04f9ed115d1",
       "skills": [
         "insurance-brokerage-agency-billing-configure",
         "life-sciences-fieldsalesrep-coordinate",
@@ -364,6 +372,7 @@
   "assignments": {
     "agentforce-offline-experimentation-run": "sf-platform-extras",
     "commerce-b2b-store-create": "sf-commerce",
+    "commerce-react-storefront-create": "sf-commerce",
     "consumer-goods-accruals-datakit-deploy": "sf-consumer-goods",
     "consumer-goods-promotion-bo-api-deploy": "sf-consumer-goods",
     "consumer-goods-rtr-datacloud-export-configure": "sf-consumer-goods",
@@ -384,9 +393,13 @@
     "dx-org-analyze": "sf-platform-extras",
     "dx-org-shape-manage": "sf-platform-extras",
     "dx-org-snapshot-manage": "sf-platform-extras",
+    "dx-packaging-move-to-2gp-migrate": "sf-platform-extras",
+    "dx-scratch-def-configure": "sf-platform-extras",
     "experience-cms-brand-create": "sf-experience-extras",
     "experience-content-media-image-generate": "sf-experience-extras",
     "experience-design-validate": "sf-experience-extras",
+    "experience-lwc-widget-assess": "sf-experience-extras",
+    "experience-lwc-widget-migrate": "sf-experience-extras",
     "experience-lwr-site-generate": "sf-experience-extras",
     "experience-portal-create": "sf-experience-extras",
     "experience-search-coordinate": "sf-experience-extras",
@@ -427,8 +440,11 @@
     "platform-dataspace-access-configure": "sf-platform-extras",
     "platform-docs-get": "sf-platform-extras",
     "platform-dsar-policy-manage": "sf-platform-extras",
+    "platform-metadata-discovery-get": "sf-platform-extras",
+    "platform-metadata-grounding-get": "sf-platform-extras",
     "platform-models-api-configure": "sf-platform-extras",
     "platform-policy-rule-generate": "sf-platform-extras",
+    "platform-role-hierarchy-apply": "sf-platform-extras",
     "sales-agentforce-pipeline-management-configure": "sf-industries-misc",
     "sales-call-scoring-configure": "sf-industries-misc",
     "service-agentforce-contact-center-coordinate": "sf-service-itsm",
@@ -465,10 +481,10 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "72d9f5f43614c1de9596913d887685d069ec9a73",
+  "upstreamSha": "219a84a028387366f9d73fd2551ce7ed47bb1103",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "4f848fcb58a26a20fa88cc340a48bf9e3d276a51",
+      "sha": "82d90df2c633837279a55a504831a63f9f7b86e4",
       "plugins": [
         "b2c",
         "b2c-cli",
