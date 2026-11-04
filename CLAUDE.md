@@ -7,7 +7,7 @@ CloudzLab's Claude Code plugin catalog (`cloudzlab`) for Salesforce work. It pac
 Two levels, decided with the user on 2026-10-15:
 
 - **Core**: on for everyone via claude.ai server-managed settings (`managed-settings.json`). 14 official `@salesforce` plugins + `sf-platform-extras@cloudzlab`.
-- **Specialist**: everything else, including all 8 plugins of Salesforce's B2C Commerce catalog `b2c-developer-tooling` (an `externalCatalogs` entry: registered in managed settings with nothing enabled; the sync reads its plugin list for templates and the finder). Enabled per repo (`.claude/settings.json`, templates in `templates/project-settings/`) or by the developer via `/plugin`, guided by the `sf-plugin-finder` skill.
+- **Specialist**: everything else (official or external plugins not yet listed in config default to specialist at sync time), including all 8 plugins of Salesforce's B2C Commerce catalog `b2c-developer-tooling` (an `externalCatalogs` entry: registered in managed settings with nothing enabled; the sync reads its plugin list for templates and the finder). Enabled per repo (`.claude/settings.json`, templates in `templates/project-settings/`) or by the developer via `/plugin`, guided by the `sf-plugin-finder` skill.
 
 Team skills are always recomputed as *skills in sf-skills/skills/ minus skills inside any released official plugin* (released = listed in upstream `.claude-plugin/marketplace.json`), then grouped by longest name prefix. Skills Salesforce moves into an official plugin drop out automatically.
 
@@ -21,7 +21,7 @@ Team skills are always recomputed as *skills in sf-skills/skills/ minus skills i
 | `scripts/sync.py` | Yes | Regenerates everything below and writes `SYNC_REPORT.md` (PR body, gitignored) |
 | `scripts/validate.sh` | Yes | `claude plugin validate --strict` on catalog + every plugin, JSON checks |
 | `plugins/`, `.claude-plugin/marketplace.json`, `managed-settings.json`, `templates/project-settings/`, `state/index.json` | **No, generated** | Re-run the sync instead |
-| `.github/workflows/sync.yml` | Yes | Weekdays 05:00 UTC: sync, and if catalog files changed, validate and open/update PR `sync/salesforce-skills` |
+| `.github/workflows/sync.yml` | Yes | Weekdays 05:17 UTC: sync; if catalog files changed, validate, open/update PR `sync/salesforce-skills`, post a commit status, and merge it unless `sync.py` reports blockers (large change, managed-settings change) |
 | `.github/workflows/validate.yml` | Yes | Every PR and push to main |
 
 ## Working here
@@ -34,6 +34,7 @@ scripts/validate.sh                              # needs the claude CLI
 
 - After editing `config/` or `templates/`, re-run the sync and commit the regenerated files with it. CI warns if generated files differ from a fresh sync.
 - Plugin versions are content-hashed: a plugin's patch version bumps only when its files change. Anything copied into every plugin (`NOTICE`, `LICENSE.txt`) bumps all of them.
+- The sync PR is merged by the workflow itself (decided 2026-11-04). `sync.py` writes `automerge=true|false` to `$GITHUB_OUTPUT`; only *Needs a human* items block it, *Handled automatically* items don't. PRs opened with the default token get no workflow runs of their own (`Validate catalog` shows `action_required`), hence the commit status from the sync job.
 - Our skill names must not collide with upstream; the sync exits with an error if they do.
 - Test installs in a throwaway config so the real one is untouched: `CLAUDE_CONFIG_DIR=<scratch dir> claude plugin marketplace add <repo path>`, then `claude plugin install … / details …`. `claude plugin details` reports each plugin's always-on token cost.
 - Skill descriptions are capped at 1024 chars; the finder's keyword list is built round-robin across plugins to fit.
@@ -63,4 +64,4 @@ Done: catalog built and pushed (10 team plugins, 101 skills + 2 team skills), re
 Next:
 1. Org Owner re-pastes `managed-settings.json` (now registers `b2c-developer-tooling`). Then announce to the team: restart, then "Reset my Salesforce Claude setup" (`sf-setup-reset`). Managed settings are live org-wide since 2026-10-18.
 2. Add per-project settings files to specialist repos, with the one-time install command in each repo's README.
-3. Watch the first automatic sync PR: the `create-pull-request@v8` step hasn't run yet.
+3. Watch the first auto-merged sync run (PR flow verified working 2026-10-19 → 11-03; auto-merge added 2026-11-04).

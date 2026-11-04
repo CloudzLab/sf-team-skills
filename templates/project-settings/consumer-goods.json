@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "consumer-goods@salesforce": true
+  },
+  "extraKnownMarketplaces": {
+    "salesforce": {
+      "source": {
+        "source": "github",
+        "repo": "forcedotcom/sf-skills"
+      },
+      "autoUpdate": true
+    }
+  }
+}

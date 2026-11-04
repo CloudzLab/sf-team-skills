@@ -122,7 +122,7 @@ then starts a new session. Until they do, the plugin's skills don't load. Nobody
 2. Paste the contents of [`managed-settings.json`](managed-settings.json) and save.
 3. Clients fetch it at startup and refresh hourly. The plugins install at each developer's **next session start**; open sessions don't change until they restart. Nobody is prompted.
 
-When a sync PR says `managed-settings.json` changed, merge it and paste the file again.
+When a sync PR says `managed-settings.json` changed, merge it and paste the file again. The sync never merges such a PR by itself, so it waits for you.
 
 This repo is public, so developers need no GitHub access or login for the `cloudzlab` catalog.
 
@@ -156,19 +156,28 @@ Nothing is uninstalled or removed when the settings arrive; the reset step (`sf-
 3. Assigns each team skill to a team plugin by the longest matching name prefix in `config/catalog.json`.
 4. Regenerates `plugins/`, the catalog, `managed-settings.json` and the per-project templates. A plugin's patch version goes up only when its content changed.
 5. Validates everything with `claude plugin validate --strict`.
-6. Opens a PR whose description lists what changed and anything that needs a person.
+6. Opens a PR whose description lists what changed, records the validation on it as the check *Validate catalog (sync job)*, and **merges it** with a merge commit. Developers get the update through catalog auto-update.
 
-The PR's **Needs a human** section flags:
+Official or B2C plugins that Salesforce releases and `config/catalog.json` doesn't list yet are treated as **specialist**: they get a project-settings template and the finder can suggest them, but nothing is switched on for anyone.
+
+The sync leaves the PR open, labelled `needs-human`, only when its **Needs a human** section lists something:
 
 | Flag | What to do |
 |---|---|
-| **Large change** (more than 25% of team skills added or removed) | Salesforce has published and then reverted big releases on the same day, e.g. 15 Oct 2026. Check upstream history before merging. |
-| **New official plugin** / **classify official plugin** | Add it to `officialPlugins.core` or `.specialist` in `config/catalog.json` and re-run. Core plugins also need the admin to re-paste managed settings. |
-| **Moved into official plugins** | Nothing. The team copy is dropped automatically. If the new official plugin should be core, add it to core. |
+| **Large change** (more than 25% of team skills added or removed) | Salesforce has published and then reverted big releases on the same day, e.g. 15 Oct 2026. Check upstream history, then merge or close. |
+| **`managed-settings.json` changed** | Merge, then the admin re-pastes it. |
+
+The **Handled automatically** section is for information only:
+
+| Note | Optional follow-up |
+|---|---|
+| **New official plugin** / **defaulted to specialist** | To switch it on for everyone, add it to `officialPlugins.core` (the admin then re-pastes managed settings). To improve the finder, list it under `officialPlugins.specialist` with keywords. |
+| **Moved into official plugins** | The team copy is dropped automatically. Repos that enabled the team plugin should enable the official one. |
 | **Skills gone from upstream** | Renamed or deleted. Look for a renamed copy under *Added*. |
 | **Skills with no matching prefix** | Add a prefix in `config/catalog.json` if the fallback plugin is the wrong home. |
 | **Retired plugin** | Its skills all moved to official plugins. It stays in the catalog for 30 days marked RETIRED, then is removed. Remove it from any repo settings. |
-| **`managed-settings.json` changed** | After merging, the admin re-pastes it. |
+
+If a scheduled run fails, GitHub emails whoever last edited the workflow's schedule. To run it now: `gh workflow run sync.yml`.
 
 Running it locally:
 

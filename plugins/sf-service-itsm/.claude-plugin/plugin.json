@@ -1,6 +1,6 @@
 {
   "name": "sf-service-itsm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog.",
   "author": {
     "name": "CloudzLab"
