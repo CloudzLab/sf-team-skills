@@ -5,19 +5,16 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | Skill | Plugin | Install |
 |---|---|---|
 | `commerce-b2b-store-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
-| `consumer-goods-accruals-datakit-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
+| `commerce-react-storefront-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
 | `consumer-goods-promotion-bo-api-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
-| `consumer-goods-rtr-datacloud-export-configure` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
-| `consumer-goods-sync-management-configure` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
-| `consumer-goods-tpe-dashboard-configure` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
-| `consumer-goods-tpe-dashboard-custom-kpi-configure` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
-| `consumer-goods-tpe-datakit-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
 | `crm-analytics-wave-generate` | `sf-crm-analytics` | `sf-crm-analytics@cloudzlab` |
 | `data360-code-extension-generate` | `sf-data360` | `sf-data360@cloudzlab` |
 | `data360-schema-get` | `sf-data360` | `sf-data360@cloudzlab` |
 | `experience-cms-brand-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-content-media-image-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-design-validate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-assess` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-lwc-widget-migrate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-lwr-site-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-portal-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-search-coordinate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
@@ -57,21 +54,14 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `service-agentforce-contact-center-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-catalog-template-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-concierge-portal-generate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-agent-runtime-access-assign` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-agentforce-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-agentforce-studio-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-agentforce-studio-validate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-access-assign` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-bundle-deploy` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-discovery-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-employee-agent-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-fulfiller-agent-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-incident-management` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-incident-sla-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
-| `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-uel-user-create` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-channels-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-incident-mgmt-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
@@ -98,6 +88,19 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `education-cloud-domain-configure` | `education-cloud` (Salesforce) | `education-cloud@salesforce` |
 | `education-cloud-multi-campus-configure` | `education-cloud` (Salesforce) | `education-cloud@salesforce` |
 | `education-cloud-student-recruitment-agent-configure` | `education-cloud` (Salesforce) | `education-cloud@salesforce` |
+| `consumer-goods-accruals-datakit-deploy` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `consumer-goods-rtr-datacloud-export-configure` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `consumer-goods-sync-management-configure` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `consumer-goods-tpe-dashboard-configure` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `consumer-goods-tpe-dashboard-custom-kpi-configure` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `consumer-goods-tpe-datakit-deploy` | `consumer-goods` (Salesforce) | `consumer-goods@salesforce` |
+| `service-itsm-agentic-setup-agent-runtime-access-assign` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-agentforce-coordinate` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-agentforce-studio-configure` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-agentforce-studio-validate` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-employee-agent-configure` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-fulfiller-agent-configure` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
 | `b2c-business-manager-extensions` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |
 | `b2c-controllers` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |
 | `b2c-custom-api-development` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |
@@ -133,12 +136,16 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `b2c-logs` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-metrics` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-mrt` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-object-types` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-replication` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sandbox` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-custom` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-schemas` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-setup` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-site-import-export` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sites` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-slas` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-storefronts` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-webdav` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `sfnext-accessibility` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-analytics-consent` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
@@ -166,8 +173,10 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `sfnext-theming` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `b2c-checkout-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-edge-traffic-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
+| `b2c-integration-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-job-health` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-order-failure-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
+| `b2c-performance-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `b2c-production-triage` | `b2c-ops` (Salesforce B2C Commerce) | `b2c-ops@b2c-developer-tooling` |
 | `sfnext-create-figma-kit` | `storefront-next-figma` (Salesforce B2C Commerce) | `storefront-next-figma@b2c-developer-tooling` |
 | `figma-to-sfnext-pagedesigner` | `figma-to-sfnext-pagedesigner` (Salesforce B2C Commerce) | `figma-to-sfnext-pagedesigner@b2c-developer-tooling` |

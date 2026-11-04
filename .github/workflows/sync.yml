@@ -1,16 +1,19 @@
 name: Sync Salesforce skills
 
-# Rebuilds the team plugins from forcedotcom/sf-skills and opens a PR when anything changed.
+# Rebuilds the team plugins from forcedotcom/sf-skills, opens a PR when anything changed, and merges it
+# once validation passes. It leaves the PR open (label `needs-human`) only for a large upstream change or a
+# managed-settings change, which the admin has to re-paste.
 # Requires: Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
 
 on:
   schedule:
-    - cron: "0 5 * * 1-5" # weekdays, 05:00 UTC
+    - cron: "17 5 * * 1-5" # weekdays, 05:17 UTC (off the hour: GitHub drops more runs scheduled on the hour)
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
+  statuses: write
 
 concurrency:
   group: sync-salesforce-skills
@@ -31,6 +34,7 @@ jobs:
           node-version: "22"
 
       - name: Rebuild team plugins
+        id: sync
         run: python3 scripts/sync.py
 
       - name: Detect catalog changes
@@ -50,6 +54,7 @@ jobs:
           scripts/validate.sh
 
       - name: Open or update the sync PR
+        id: pr
         if: steps.changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
@@ -58,4 +63,26 @@ jobs:
           commit-message: "chore(sync): rebuild team plugins from forcedotcom/sf-skills"
           title: "Sync Salesforce skills"
           body-path: SYNC_REPORT.md
-          labels: salesforce-sync
+          labels: ${{ steps.sync.outputs.automerge == 'true' && 'salesforce-sync' || 'salesforce-sync,needs-human' }}
+
+      # PRs opened with the default token don't get their own workflow runs, so record this job's validation
+      # on the PR as a check instead.
+      - name: Report validation on the PR
+        if: steps.pr.outputs.pull-request-head-sha
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/${{ github.repository }}/statuses/${{ steps.pr.outputs.pull-request-head-sha }}" \
+            -f state=success -f context="Validate catalog (sync job)" \
+            -f description="claude plugin validate --strict passed" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Merge the sync PR
+        if: steps.pr.outputs.pull-request-number && steps.sync.outputs.automerge == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge "${{ steps.pr.outputs.pull-request-number }}" --merge --delete-branch
+
+      - name: Leave the PR for a person
+        if: steps.pr.outputs.pull-request-number && steps.sync.outputs.automerge != 'true'
+        run: echo "::warning::Sync PR #${{ steps.pr.outputs.pull-request-number }} needs a human; see its 'Needs a human' section."

@@ -225,6 +225,25 @@ def main():
         official = read_official_plugins(source)
         official_skill_owner = {s: name for name, info in official.items() for s in info["skills"]}
 
+        # Plugins nobody has classified yet default to specialist: nothing is switched on for anyone, the finder
+        # can still suggest them, and a maintainer can promote one to core later in config/catalog.json.
+        configured = set(cfg["officialPlugins"]["core"]) | set(cfg["officialPlugins"]["specialist"])
+        unclassified_official = sorted(n for n in official if n not in configured)
+        missing_official = sorted(n for n in configured if n not in official)
+        cfg["officialPlugins"]["specialist"] = cfg["officialPlugins"]["specialist"] + unclassified_official
+        keywords_cfg = cfg["officialPlugins"].setdefault("specialistKeywords", {})
+        for n in unclassified_official:
+            keywords_cfg.setdefault(n, [n.replace("-", " ")])
+        unlisted_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
+                             for n in external[ext["name"]] if n not in ext["specialist"]]
+        missing_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
+                            for n in ext["specialist"] if n not in external[ext["name"]]]
+        for ext in cfg.get("externalCatalogs", []):
+            extra = sorted(n for c, n in unlisted_external if c == ext["name"])
+            ext["specialist"] = ext["specialist"] + extra
+            for n in extra:
+                ext.setdefault("keywords", {}).setdefault(n, [n.replace("-", " ")])
+
         team_plugin_names = [p["name"] for p in cfg["teamPlugins"]]
         finder_name = cfg["finder"]["skill"]
         owned = cfg.get("ownedSkills", [])
@@ -377,14 +396,7 @@ def main():
         added = sorted((s, p) for s, p in assignments.items() if s not in prev_assign)
         regrouped = sorted((s, prev_assign[s], p) for s, p in assignments.items()
                            if s in prev_assign and prev_assign[s] != p)
-        configured = set(cfg["officialPlugins"]["core"]) | set(cfg["officialPlugins"]["specialist"])
-        unclassified_official = sorted(n for n in official if n not in configured)
-        missing_official = sorted(n for n in configured if n not in official)
         new_official = sorted(n for n in official if state.get("official") and n not in state["official"])
-        unlisted_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
-                             for n in external[ext["name"]] if n not in ext["specialist"]]
-        missing_external = [(ext["name"], n) for ext in cfg.get("externalCatalogs", [])
-                            for n in ext["specialist"] if n not in external[ext["name"]]]
 
         state.update({
             "upstreamSha": upstream_sha,
@@ -406,46 +418,55 @@ def main():
                  f"- In team plugins: {len(assignments)} across {sum(1 for n in new_state_plugins if new_state_plugins[n]['skills'])} plugins",
                  ""]
 
-        actions = []
+        # Blockers stop the automatic merge; notes are for information and merge on their own.
+        blockers, notes = [], []
         prev_count, new_count = len(prev_assign), len(assignments)
         if prev_count and abs(new_count - prev_count) > max(10, prev_count * LARGE_CHANGE_RATIO):
-            actions.append(f"**Large change: team skills went from {prev_count} to {new_count}.** Upstream sometimes "
-                           "publishes and then reverts big releases. Check the recent history of "
-                           f"`{cfg['upstream']['repo']}` before merging; if it looks like a mistake, close this PR.")
+            blockers.append(f"**Large change: team skills went from {prev_count} to {new_count}.** Upstream sometimes "
+                            "publishes and then reverts big releases. Check the recent history of "
+                            f"`{cfg['upstream']['repo']}` before merging; if it looks like a mistake, close this PR.")
+        if managed_changed and not first_run:
+            blockers.append("**`managed-settings.json` changed.** Merge, then paste it into claude.ai → Organization "
+                            "settings → Claude Code → Managed settings.")
         if new_official:
-            actions.append("**Salesforce released new official plugin(s):** " + ", ".join(f"`{n}`" for n in new_official))
+            notes.append("**Salesforce released new official plugin(s):** " + ", ".join(f"`{n}`" for n in new_official))
         if unclassified_official:
-            actions.append("**Classify official plugin(s) as core or specialist** in `config/catalog.json`, then re-run: "
-                           + ", ".join(f"`{n}`" for n in unclassified_official))
+            notes.append("**Defaulted to specialist** (not listed in `config/catalog.json`): "
+                         + ", ".join(f"`{n}`" for n in unclassified_official)
+                         + ". To switch one on for everyone, add it to `officialPlugins.core`; to tune the finder, "
+                         "list it under `officialPlugins.specialist` with keywords.")
         if missing_official:
-            actions.append("**Official plugin(s) in config no longer exist upstream** (renamed or removed?): "
-                           + ", ".join(f"`{n}`" for n in missing_official))
+            notes.append("**Official plugin(s) in config no longer exist upstream** (renamed or removed?): "
+                         + ", ".join(f"`{n}`" for n in missing_official))
         if unlisted_external:
-            actions.append("**New plugin(s) in an external catalog:** add them to `externalCatalogs[].specialist` in `config/catalog.json` if the team should find them: "
-                           + ", ".join(f"`{n}@{c}`" for c, n in unlisted_external))
+            notes.append("**New external plugin(s), defaulted to specialist:** "
+                         + ", ".join(f"`{n}@{c}`" for c, n in unlisted_external)
+                         + ". List them under `externalCatalogs[].specialist` with keywords to tune the finder.")
         if missing_external:
-            actions.append("**External catalog plugin(s) in config no longer exist** (renamed or removed?): "
-                           + ", ".join(f"`{n}@{c}`" for c, n in missing_external))
+            notes.append("**External catalog plugin(s) in config no longer exist** (renamed or removed?): "
+                         + ", ".join(f"`{n}@{c}`" for c, n in missing_external))
         if moved_to_official:
             owners = sorted({o for _, _, o in moved_to_official})
             not_core = [o for o in owners if o not in cfg["officialPlugins"]["core"]]
             if not_core:
-                actions.append("Skills moved into official plugin(s) that are not core: "
-                               + ", ".join(f"`{o}`" for o in not_core)
-                               + ". If the team relied on them by default, add them to `officialPlugins.core`.")
-        if managed_changed and not first_run:
-            actions.append("**`managed-settings.json` changed.** After merging, paste it into claude.ai → Admin settings → Claude Code → Managed settings.")
+                notes.append("Skills moved into official plugin(s) that are not core: "
+                             + ", ".join(f"`{o}`" for o in not_core)
+                             + ". Repos that used the team copy should enable the official plugin instead.")
         if unmatched:
-            actions.append("**Skills with no matching prefix** were put in the fallback plugin; add a prefix in `config/catalog.json` if they belong elsewhere: "
-                           + names(unmatched))
+            notes.append("**Skills with no matching prefix** were put in the fallback plugin; add a prefix in "
+                         "`config/catalog.json` if they belong elsewhere: " + names(unmatched))
         if vanished:
-            actions.append("**Skills gone from upstream** (renamed or deleted). Check whether a renamed copy is listed under Added: "
-                           + names([s for s, _ in vanished]))
+            notes.append("**Skills gone from upstream** (renamed or deleted). Check whether a renamed copy is listed under Added: "
+                         + names([s for s, _ in vanished]))
         if retired_now:
-            actions.append("**Retired plugin(s)** (now empty; removed from the catalog after "
-                           f"{RETIRE_AFTER_DAYS} days). Remove them from any repo `.claude/settings.json`: "
-                           + ", ".join(f"`{n}` (since {d})" for n, d in retired_now))
-        lines += ["## Needs a human", ""] + ([f"- {a}" for a in actions] or ["- Nothing. Merge when the checks pass."]) + [""]
+            notes.append("**Retired plugin(s)** (now empty; removed from the catalog after "
+                         f"{RETIRE_AFTER_DAYS} days). Remove them from any repo `.claude/settings.json`: "
+                         + ", ".join(f"`{n}` (since {d})" for n, d in retired_now))
+        lines += ["## Needs a human", ""]
+        lines += [f"- {a}" for a in blockers] or ["- Nothing. The sync job merges this PR once validation passes."]
+        lines += [""]
+        if notes:
+            lines += ["## Handled automatically", ""] + [f"- {a}" for a in notes] + [""]
 
         if moved_to_official:
             lines += ["## Moved into official Salesforce plugins", "", "| Skill | Was in | Now in |", "|---|---|---|"]
@@ -466,6 +487,9 @@ def main():
                   f"> {finder_description}", ""]
         (ROOT / "SYNC_REPORT.md").write_text("\n".join(lines))
         print("\n".join(lines))
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a") as out:
+                out.write(f"automerge={'false' if blockers else 'true'}\n")
     finally:
         for path in [tmp] + external_tmps:
             if path:

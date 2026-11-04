@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "service-itsm@salesforce": true
+  },
+  "extraKnownMarketplaces": {
+    "salesforce": {
+      "source": {
+        "source": "github",
+        "repo": "forcedotcom/sf-skills"
+      },
+      "autoUpdate": true
+    }
+  }
+}

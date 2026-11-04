@@ -17,7 +17,7 @@
   },
 
   "officialPlugins": {
-    "$comment": "Every official plugin must be listed as core or specialist. The sync flags any new official plugin that is in neither list.",
+    "$comment": "Official plugins switched on for everyone (core) or found on demand (specialist). A new official plugin in neither list is treated as specialist until it is listed here.",
     "core": [
       "salesforce-development",
       "agentforce-adlc",
@@ -39,7 +39,9 @@
       "mobile-development",
       "dx-isv-partner",
       "education-cloud",
-      "salesforce-test-drive"
+      "salesforce-test-drive",
+      "consumer-goods",
+      "service-itsm"
     ],
     "specialistKeywords": {
       "$comment": "Finder trigger words for official specialist plugins.",
@@ -47,7 +49,9 @@
       "mobile-development": ["Mobile SDK", "native Salesforce mobile app"],
       "dx-isv-partner": ["ISV", "managed package", "AppExchange"],
       "education-cloud": ["Education Cloud", "academic term"],
-      "salesforce-test-drive": ["test drive", "demo build"]
+      "salesforce-test-drive": ["test drive", "demo build"],
+      "consumer-goods": ["Consumer Goods Cloud", "trade promotion dashboard", "TPE datakit"],
+      "service-itsm": ["ITSM agent", "employee service agent", "fulfiller agent"]
     }
   },
 
