@@ -4,14 +4,17 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 
 | Skill | Plugin | Install |
 |---|---|---|
+| `afcc-setup-coordinate` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
 | `commerce-b2b-store-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
 | `commerce-react-storefront-create` | `sf-commerce` | `sf-commerce@cloudzlab` |
 | `consumer-goods-promotion-bo-api-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
 | `crm-analytics-wave-generate` | `sf-crm-analytics` | `sf-crm-analytics@cloudzlab` |
 | `data360-code-extension-generate` | `sf-data360` | `sf-data360@cloudzlab` |
 | `data360-schema-get` | `sf-data360` | `sf-data360@cloudzlab` |
+| `experience-afv-analytics-query` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-app-mcp-delivery-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
+| `experience-app-mcp-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-cms-brand-create` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
-| `experience-content-media-image-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-design-validate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-lwc-widget-assess` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-lwc-widget-migrate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
@@ -54,6 +57,7 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `service-agentforce-contact-center-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-catalog-template-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-concierge-portal-generate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
+| `service-e911-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-access-assign` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-bundle-deploy` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-agentic-setup-cmdb-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
@@ -101,6 +105,9 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `service-itsm-agentic-setup-employee-agent-configure` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
 | `service-itsm-agentic-setup-fulfiller-agent-configure` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
 | `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | `service-itsm` (Salesforce) | `service-itsm@salesforce` |
+| `dx-packaging-move-to-2gp-migrate` | `dx-packaging` (Salesforce) | `dx-packaging@salesforce` |
+| `dx-packaging-push-upgrade-configure` | `dx-packaging` (Salesforce) | `dx-packaging@salesforce` |
+| `dx-pkg-post-install-configure` | `dx-packaging` (Salesforce) | `dx-packaging@salesforce` |
 | `b2c-business-manager-extensions` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |
 | `b2c-controllers` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |
 | `b2c-custom-api-development` | `b2c` (Salesforce B2C Commerce) | `b2c@b2c-developer-tooling` |

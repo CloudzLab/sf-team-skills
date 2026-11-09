@@ -1,9 +1,10 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.7",
-      "hash": "8d99de5d1ac90dceddf3eef409e3241b4f5afd7df70e8296b8a29ee9837393a0",
+      "version": "1.0.8",
+      "hash": "be7ed5714f2ba718272edc8b4da012a8d843c052cd5e60022a600072360263fd",
       "skills": [
+        "agentforce-hyperclassifier-configure",
         "agentforce-offline-experimentation-run",
         "design-systems-slds-apply",
         "design-systems-slds-validate",
@@ -15,7 +16,7 @@
         "dx-org-analyze",
         "dx-org-shape-manage",
         "dx-org-snapshot-manage",
-        "dx-packaging-move-to-2gp-migrate",
+        "dx-packaging-convert-1gp-to-2gp-create",
         "dx-scratch-def-configure",
         "external-diagram-mermaid-generate",
         "platform-agenticsetup-categories-get",
@@ -29,11 +30,13 @@
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.3",
-      "hash": "0fc432b2a50c071d2d57ea09a01da7308d7d4cadf8797a7566065dfb2e0ab13b",
+      "version": "1.0.4",
+      "hash": "dc4ae725bafd7429b97bd932ee18b05f09783ad698b85201ef4e9226f407469a",
       "skills": [
+        "experience-afv-analytics-query",
+        "experience-app-mcp-delivery-generate",
+        "experience-app-mcp-generate",
         "experience-cms-brand-create",
-        "experience-content-media-image-generate",
         "experience-design-validate",
         "experience-lwc-widget-assess",
         "experience-lwc-widget-migrate",
@@ -84,20 +87,21 @@
       ]
     },
     "sf-commerce": {
-      "version": "1.0.3",
-      "hash": "ba550fa87df4ec8866dcbd6043d2c95bb885fae2aca7fb2680a6bd9c129a8f6b",
+      "version": "1.0.4",
+      "hash": "7d7f6ac09c0dd7555a6ff00b87e1cd253507ea82e71adae6c92bdac0686d6f1f",
       "skills": [
         "commerce-b2b-store-create",
         "commerce-react-storefront-create"
       ]
     },
     "sf-service-itsm": {
-      "version": "1.0.3",
-      "hash": "1134a777efc544e68b6345ab556464cb8ad53844c7335cb8c93e1ab9d8bd723a",
+      "version": "1.0.4",
+      "hash": "5003f4ac88b41dd3ccf7735d68aadd83c4d0bc50bc772c023e897dd0f5e17830",
       "skills": [
         "service-agentforce-contact-center-coordinate",
         "service-catalog-template-coordinate",
         "service-concierge-portal-generate",
+        "service-e911-configure",
         "service-itsm-agentic-setup-cmdb-access-assign",
         "service-itsm-agentic-setup-cmdb-bundle-deploy",
         "service-itsm-agentic-setup-cmdb-configure",
@@ -137,9 +141,10 @@
       ]
     },
     "sf-industries-misc": {
-      "version": "1.0.3",
-      "hash": "06cb5f90a3342829055036350b2fe9c845ed4695ebcb1f7dd725f04f9ed115d1",
+      "version": "1.0.4",
+      "hash": "76cf6e113cce1b1e6ba41d0102e43452c532a4a6a187e296799dab2dbacd74f2",
       "skills": [
+        "afcc-setup-coordinate",
         "insurance-brokerage-agency-billing-configure",
         "life-sciences-fieldsalesrep-coordinate",
         "life-sciences-kam-coordinate",
@@ -255,8 +260,7 @@
       "experience-cms-brand-apply",
       "experience-cms-content-generate",
       "experience-cms-content-render",
-      "experience-cms-content-type-generate",
-      "experience-content-media-stock-image-search"
+      "experience-cms-content-type-generate"
     ],
     "dx-org-lifecycle": [
       "automation-sandbox-post-copy-config-generate",
@@ -265,7 +269,6 @@
       "dx-org-permission-set-assign",
       "dx-org-switch",
       "dx-org-trial-expiration-check",
-      "dx-pkg-post-install-configure",
       "platform-sandbox-configure",
       "platform-trial-org-create"
     ],
@@ -370,9 +373,16 @@
       "service-itsm-agentic-setup-employee-agent-configure",
       "service-itsm-agentic-setup-fulfiller-agent-configure",
       "service-itsm-agentic-setup-itsm-agentforce-permset-assign"
+    ],
+    "dx-packaging": [
+      "dx-packaging-move-to-2gp-migrate",
+      "dx-packaging-push-upgrade-configure",
+      "dx-pkg-post-install-configure"
     ]
   },
   "assignments": {
+    "afcc-setup-coordinate": "sf-industries-misc",
+    "agentforce-hyperclassifier-configure": "sf-platform-extras",
     "agentforce-offline-experimentation-run": "sf-platform-extras",
     "commerce-b2b-store-create": "sf-commerce",
     "commerce-react-storefront-create": "sf-commerce",
@@ -390,10 +400,12 @@
     "dx-org-analyze": "sf-platform-extras",
     "dx-org-shape-manage": "sf-platform-extras",
     "dx-org-snapshot-manage": "sf-platform-extras",
-    "dx-packaging-move-to-2gp-migrate": "sf-platform-extras",
+    "dx-packaging-convert-1gp-to-2gp-create": "sf-platform-extras",
     "dx-scratch-def-configure": "sf-platform-extras",
+    "experience-afv-analytics-query": "sf-experience-extras",
+    "experience-app-mcp-delivery-generate": "sf-experience-extras",
+    "experience-app-mcp-generate": "sf-experience-extras",
     "experience-cms-brand-create": "sf-experience-extras",
-    "experience-content-media-image-generate": "sf-experience-extras",
     "experience-design-validate": "sf-experience-extras",
     "experience-lwc-widget-assess": "sf-experience-extras",
     "experience-lwc-widget-migrate": "sf-experience-extras",
@@ -445,6 +457,7 @@
     "service-agentforce-contact-center-coordinate": "sf-service-itsm",
     "service-catalog-template-coordinate": "sf-service-itsm",
     "service-concierge-portal-generate": "sf-service-itsm",
+    "service-e911-configure": "sf-service-itsm",
     "service-itsm-agentic-setup-cmdb-access-assign": "sf-service-itsm",
     "service-itsm-agentic-setup-cmdb-bundle-deploy": "sf-service-itsm",
     "service-itsm-agentic-setup-cmdb-configure": "sf-service-itsm",
@@ -469,10 +482,10 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "a8a18ce1e4ba12e69b4073eab98ce31bfbd8271e",
+  "upstreamSha": "0c7cb9304a071266264628a84bc498b23cde9c13",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "8e81163a88a39255089008d4510c685ec57accfc",
+      "sha": "b16d5e4b5b12b9a8fa2e26725fc604317d9c22e4",
       "plugins": [
         "b2c",
         "b2c-cli",
