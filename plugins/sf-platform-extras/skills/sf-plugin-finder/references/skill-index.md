@@ -10,7 +10,6 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `consumer-goods-promotion-bo-api-deploy` | `sf-consumer-goods` | `sf-consumer-goods@cloudzlab` |
 | `crm-analytics-wave-generate` | `sf-crm-analytics` | `sf-crm-analytics@cloudzlab` |
 | `data360-code-extension-generate` | `sf-data360` | `sf-data360@cloudzlab` |
-| `data360-schema-get` | `sf-data360` | `sf-data360@cloudzlab` |
 | `experience-afv-analytics-query` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-app-mcp-delivery-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
 | `experience-app-mcp-generate` | `sf-experience-extras` | `sf-experience-extras@cloudzlab` |
@@ -29,10 +28,8 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `field-service-foundation-setup-designer-get` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-mobile-branding-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-objective-designer-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
-| `field-service-prework-brief-deployer-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-scheduling-policy-designer-query` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-sobject-create-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
-| `field-service-voice-to-form-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-work-rule-designer-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `insurance-brokerage-agency-billing-configure` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
 | `life-sciences-fieldsalesrep-coordinate` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
@@ -144,10 +141,12 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `b2c-metrics` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-mrt` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-object-types` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-project` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-replication` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sandbox` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-custom` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-scapi-schemas` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
+| `b2c-security` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-setup` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-site-import-export` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
 | `b2c-sites` | `b2c-cli` (Salesforce B2C Commerce) | `b2c-cli@b2c-developer-tooling` |
@@ -175,6 +174,7 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `sfnext-scapi` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-security` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-seo` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
+| `sfnext-site-audit` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-state-management` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-testing` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |
 | `sfnext-theming` | `storefront-next` (Salesforce B2C Commerce) | `storefront-next@b2c-developer-tooling` |

@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.8",
-      "hash": "be7ed5714f2ba718272edc8b4da012a8d843c052cd5e60022a600072360263fd",
+      "version": "1.0.9",
+      "hash": "f0ffe0ff88a0ad577656a600cb166227f90d4ddd0bdd9465bcead7063f8fd950",
       "skills": [
         "agentforce-hyperclassifier-configure",
         "agentforce-offline-experimentation-run",
@@ -46,16 +46,15 @@
       ]
     },
     "sf-data360": {
-      "version": "1.0.2",
-      "hash": "00d6e13ff46ddb1190316979376b9dfff80809d4ff8542a848306b6fa8d66644",
+      "version": "1.0.3",
+      "hash": "ff98655a0b8adc5ce649508ff17558b551e388b20e323cb3d22acb93895e3b3f",
       "skills": [
-        "data360-code-extension-generate",
-        "data360-schema-get"
+        "data360-code-extension-generate"
       ]
     },
     "sf-field-service": {
-      "version": "1.0.3",
-      "hash": "6d43134af3d1de642baf58cef7510f0a2b89f73dc28f2fcb92d2b7a49480106f",
+      "version": "1.0.4",
+      "hash": "b35dc8d4a9b47c80224cb51e1e46a917560be7f111183b2062856a6883949575",
       "skills": [
         "field-service-data-capture-form-deployer-configure",
         "field-service-data-capture-form-designer-configure",
@@ -65,10 +64,8 @@
         "field-service-foundation-setup-designer-get",
         "field-service-mobile-branding-configure",
         "field-service-objective-designer-configure",
-        "field-service-prework-brief-deployer-configure",
         "field-service-scheduling-policy-designer-query",
         "field-service-sobject-create-configure",
-        "field-service-voice-to-form-configure",
         "field-service-work-rule-designer-configure"
       ]
     },
@@ -389,7 +386,6 @@
     "consumer-goods-promotion-bo-api-deploy": "sf-consumer-goods",
     "crm-analytics-wave-generate": "sf-crm-analytics",
     "data360-code-extension-generate": "sf-data360",
-    "data360-schema-get": "sf-data360",
     "design-systems-slds-apply": "sf-platform-extras",
     "design-systems-slds-validate": "sf-platform-extras",
     "design-systems-slds2-migrate": "sf-platform-extras",
@@ -421,10 +417,8 @@
     "field-service-foundation-setup-designer-get": "sf-field-service",
     "field-service-mobile-branding-configure": "sf-field-service",
     "field-service-objective-designer-configure": "sf-field-service",
-    "field-service-prework-brief-deployer-configure": "sf-field-service",
     "field-service-scheduling-policy-designer-query": "sf-field-service",
     "field-service-sobject-create-configure": "sf-field-service",
-    "field-service-voice-to-form-configure": "sf-field-service",
     "field-service-work-rule-designer-configure": "sf-field-service",
     "insurance-brokerage-agency-billing-configure": "sf-industries-misc",
     "life-sciences-fieldsalesrep-coordinate": "sf-industries-misc",
@@ -482,10 +476,10 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "0c7cb9304a071266264628a84bc498b23cde9c13",
+  "upstreamSha": "788b83fb9f5effb4f1548e3090df415704d3ec64",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "b16d5e4b5b12b9a8fa2e26725fc604317d9c22e4",
+      "sha": "2149bff4c2dff036afaebeaa960cf822388fc354",
       "plugins": [
         "b2c",
         "b2c-cli",

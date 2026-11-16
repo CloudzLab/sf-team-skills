@@ -35,8 +35,8 @@ Never install without the developer's agreement, and never change core plugins: 
 | Plugin | Covers | Skills | Install |
 |---|---|---|---|
 | `sf-experience-extras` | Experience Cloud site configuration beyond components: LWR sites, portals, custom domains, navigation menus, notifications, Lightning Out and page setup. | 10 | `sf-experience-extras@cloudzlab` |
-| `sf-data360` | Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs. | 2 | `sf-data360@cloudzlab` |
-| `sf-field-service` | Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs. | 13 | `sf-field-service@cloudzlab` |
+| `sf-data360` | Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs. | 1 | `sf-data360@cloudzlab` |
+| `sf-field-service` | Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs. | 11 | `sf-field-service@cloudzlab` |
 | `sf-omnistudio` | OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment. | 8 | `sf-omnistudio@cloudzlab` |
 | `sf-commerce` | Commerce beyond B2B storefront components: B2B store setup, delivery estimates, BOPIS, fees, returns, merchant catalogs and buyer groups, merchant insights and React storefronts. | 2 | `sf-commerce@cloudzlab` |
 | `sf-service-itsm` | IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog. | 25 | `sf-service-itsm@cloudzlab` |
@@ -52,8 +52,8 @@ Never install without the developer's agreement, and never change core plugins: 
 | `service-itsm` (Salesforce) | Set up Agentforce for IT Service: enable Studio, configure Employee and Fulfiller agents, assign ITSM permissions, and grant runtime access. | 7 | `service-itsm@salesforce` |
 | `dx-packaging` (Salesforce) | Set up managed packages after installation, operate subscriber push upgrades, and finalize the 2GP cutover for converted 1GP managed packages: automate configuration after installation, plan and schedule controlled rollouts, monitor or abort package push jobs across subscriber fleets, and check eligibility and plan the 2GP cutover, which is finalized only after explicit confirmation. | 3 | `dx-packaging@salesforce` |
 | `b2c` (Salesforce B2C Commerce) | B2C Commerce development skills including Custom API development guides. | 20 | `b2c@b2c-developer-tooling` |
-| `b2c-cli` (Salesforce B2C Commerce) | B2C CLI Skills for Salesforce Commerce Cloud development. | 26 | `b2c-cli@b2c-developer-tooling` |
-| `storefront-next` (Salesforce B2C Commerce) | Storefront Next development skills for building React 19 storefronts on Salesforce B2C Commerce. | 24 | `storefront-next@b2c-developer-tooling` |
+| `b2c-cli` (Salesforce B2C Commerce) | B2C CLI Skills for Salesforce Commerce Cloud development. | 28 | `b2c-cli@b2c-developer-tooling` |
+| `storefront-next` (Salesforce B2C Commerce) | Storefront Next development skills for building React 19 storefronts on Salesforce B2C Commerce. | 25 | `storefront-next@b2c-developer-tooling` |
 | `b2c-ops` (Salesforce B2C Commerce) | B2C Commerce operator and administrator runbooks for job health, checkout failures, edge traffic and bots, and incident triage. | 7 | `b2c-ops@b2c-developer-tooling` |
 | `b2c-dx-mcp` (Salesforce B2C Commerce) | Build, debug, and deploy Salesforce B2C Commerce with your AI assistant. Includes documentation, workflow skills, and Salesforce Commerce API tools. | 0 | `b2c-dx-mcp@b2c-developer-tooling` |
 | `storefront-next-figma` (Salesforce B2C Commerce) | Figma design-kit skills for Storefront Next verticals — duplicate the kit, sync brand variables, and publish Code Connect. Requires the Figma MCP server. | 1 | `storefront-next-figma@b2c-developer-tooling` |
