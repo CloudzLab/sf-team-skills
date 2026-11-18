@@ -75,9 +75,9 @@
     {
       "name": "sf-data360",
       "tier": "specialist",
-      "description": "Data 360 (Data Cloud): data streams, data model objects, identity resolution, segments, calculated insights, activations, semantic models and knowledge graphs.",
-      "areas": "Data 360 / Data Cloud",
-      "keywords": ["Data 360", "Data Cloud", "DMO", "DLO", "data stream", "identity resolution", "segment", "calculated insight", "activation", "semantic model"],
+      "description": "Data 360 (Data Cloud) Code Extensions: create, test and deploy custom Python/PySpark scripts and functions that transform data lake objects.",
+      "areas": "Data 360 / Data Cloud code extensions",
+      "keywords": ["Data 360", "Data Cloud", "code extension", "DLO", "PySpark", "custom code", "data transform"],
       "prefixes": ["data360-"]
     },
     {
