@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.9",
-      "hash": "f0ffe0ff88a0ad577656a600cb166227f90d4ddd0bdd9465bcead7063f8fd950",
+      "version": "1.0.10",
+      "hash": "00c79d73e44e2ea95af0585b9cb28135ab99f54a8d96458160fd84a521c44cbc",
       "skills": [
         "agentforce-hyperclassifier-configure",
         "agentforce-offline-experimentation-run",
@@ -479,7 +479,7 @@
   "upstreamSha": "788b83fb9f5effb4f1548e3090df415704d3ec64",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "2149bff4c2dff036afaebeaa960cf822388fc354",
+      "sha": "0fee2877807ed8f9527f55745ab60a1d23a85002",
       "plugins": [
         "b2c",
         "b2c-cli",

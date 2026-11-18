@@ -43,7 +43,7 @@ A plugin is downloaded once per machine. Being *enabled* is what decides whether
 | Plugin | Catalog | What it does |
 |---|---|---|
 | `sf-experience-extras` | cloudzlab | Experience Cloud site setup: LWR sites, portals, domains, menus |
-| `sf-data360` | cloudzlab | Data 360 / Data Cloud |
+| `sf-data360` | cloudzlab | Data 360 / Data Cloud code extensions |
 | `sf-field-service` | cloudzlab | Field Service scheduling, work plans, data capture forms |
 | `sf-omnistudio` | cloudzlab | OmniScripts, FlexCards, Integration Procedures, DataMappers |
 | `sf-commerce` | cloudzlab | Commerce store setup and fulfilment |
