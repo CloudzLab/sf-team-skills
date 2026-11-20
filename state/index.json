@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.10",
-      "hash": "00c79d73e44e2ea95af0585b9cb28135ab99f54a8d96458160fd84a521c44cbc",
+      "version": "1.0.11",
+      "hash": "a7ba0b6b0ac990f99a0eaf8726c440acd6989d3452afc11b3aea8b77cc051eef",
       "skills": [
         "agentforce-hyperclassifier-configure",
         "agentforce-offline-experimentation-run",
@@ -30,8 +30,8 @@
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.4",
-      "hash": "dc4ae725bafd7429b97bd932ee18b05f09783ad698b85201ef4e9226f407469a",
+      "version": "1.0.5",
+      "hash": "ab9e23bc459b64b9b2889c5fcd1e2b0a2f75d9d1ef6d48ff7e1faf9dbc3410be",
       "skills": [
         "experience-afv-analytics-query",
         "experience-app-mcp-delivery-generate",
@@ -84,8 +84,8 @@
       ]
     },
     "sf-commerce": {
-      "version": "1.0.4",
-      "hash": "7d7f6ac09c0dd7555a6ff00b87e1cd253507ea82e71adae6c92bdac0686d6f1f",
+      "version": "1.0.5",
+      "hash": "1be7b4e85a3886bb95119d63dccae8ac82d18906a35afe0bc866cbb21bc00837",
       "skills": [
         "commerce-b2b-store-create",
         "commerce-react-storefront-create"
@@ -122,6 +122,13 @@
         "service-native-voice-recording-transcription-configure"
       ]
     },
+    "sf-industries": {
+      "version": "1.0.0",
+      "hash": "8eaaa2fb3c9aa6382d8b8b616c2ed9890332af7f775281a055a6c8120dd7d624",
+      "skills": [
+        "industries-patient-card-generate"
+      ]
+    },
     "sf-consumer-goods": {
       "version": "1.0.3",
       "hash": "575fbe038d7b21a557b140f7bd9543153a7c9ba595c5b42d9726a30e1e8d0794",
@@ -138,8 +145,8 @@
       ]
     },
     "sf-industries-misc": {
-      "version": "1.0.4",
-      "hash": "76cf6e113cce1b1e6ba41d0102e43452c532a4a6a187e296799dab2dbacd74f2",
+      "version": "1.0.5",
+      "hash": "0d47b6907424e7d5b63c106dfaf4f2d7cf5eb26323ce6a6f99ba8f49d4add4c8",
       "skills": [
         "afcc-setup-coordinate",
         "insurance-brokerage-agency-billing-configure",
@@ -420,6 +427,7 @@
     "field-service-scheduling-policy-designer-query": "sf-field-service",
     "field-service-sobject-create-configure": "sf-field-service",
     "field-service-work-rule-designer-configure": "sf-field-service",
+    "industries-patient-card-generate": "sf-industries",
     "insurance-brokerage-agency-billing-configure": "sf-industries-misc",
     "life-sciences-fieldsalesrep-coordinate": "sf-industries-misc",
     "life-sciences-kam-coordinate": "sf-industries-misc",
@@ -476,10 +484,10 @@
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "788b83fb9f5effb4f1548e3090df415704d3ec64",
+  "upstreamSha": "431c50f69746c84c6348c19778b71d6ad257f696",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "0fee2877807ed8f9527f55745ab60a1d23a85002",
+      "sha": "7c62d2c6bc28d9486460c074a329d42b783d68fe",
       "plugins": [
         "b2c",
         "b2c-cli",

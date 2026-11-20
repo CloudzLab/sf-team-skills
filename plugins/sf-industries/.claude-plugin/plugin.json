@@ -1,0 +1,20 @@
+{
+  "name": "sf-industries",
+  "version": "1.0.0",
+  "description": "Settings shared across Industry clouds: decision tables and matrices, contact center, home health, care management, fundraising, compliance and document AI.",
+  "author": {
+    "name": "CloudzLab"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CloudzLab/sf-team-skills",
+  "repository": "https://github.com/CloudzLab/sf-team-skills.git",
+  "keywords": [
+    "salesforce",
+    "industries",
+    "decision table",
+    "decision matrix",
+    "home health",
+    "care management",
+    "fundraising"
+  ]
+}

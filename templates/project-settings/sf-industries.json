@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "sf-industries@cloudzlab": true
+  },
+  "extraKnownMarketplaces": {
+    "cloudzlab": {
+      "source": {
+        "source": "github",
+        "repo": "CloudzLab/sf-team-skills"
+      },
+      "autoUpdate": true
+    }
+  }
+}
