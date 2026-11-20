@@ -31,6 +31,7 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `field-service-scheduling-policy-designer-query` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-sobject-create-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
 | `field-service-work-rule-designer-configure` | `sf-field-service` | `sf-field-service@cloudzlab` |
+| `industries-patient-card-generate` | `sf-industries` | `sf-industries@cloudzlab` |
 | `insurance-brokerage-agency-billing-configure` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
 | `life-sciences-fieldsalesrep-coordinate` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
 | `life-sciences-kam-coordinate` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
