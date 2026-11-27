@@ -1,8 +1,8 @@
 {
   "plugins": {
     "sf-platform-extras": {
-      "version": "1.0.11",
-      "hash": "a7ba0b6b0ac990f99a0eaf8726c440acd6989d3452afc11b3aea8b77cc051eef",
+      "version": "1.0.12",
+      "hash": "a49f00a9658ce1adfb20f2fe7ed691c78679aff31a600f7673ee4042fa7ac437",
       "skills": [
         "agentforce-hyperclassifier-configure",
         "agentforce-offline-experimentation-run",
@@ -30,8 +30,8 @@
       ]
     },
     "sf-experience-extras": {
-      "version": "1.0.5",
-      "hash": "ab9e23bc459b64b9b2889c5fcd1e2b0a2f75d9d1ef6d48ff7e1faf9dbc3410be",
+      "version": "1.0.6",
+      "hash": "8c88fb83d4e45b8a693f027960b12d9581678cc772c5422d149b645c25b6d6a4",
       "skills": [
         "experience-afv-analytics-query",
         "experience-app-mcp-delivery-generate",
@@ -92,9 +92,10 @@
       ]
     },
     "sf-service-itsm": {
-      "version": "1.0.4",
-      "hash": "5003f4ac88b41dd3ccf7735d68aadd83c4d0bc50bc772c023e897dd0f5e17830",
+      "version": "1.0.5",
+      "hash": "de37a288b05c0e4ba1c3a4c1a3f8b34f5701ee14d998b200c395b66612a8a2a2",
       "skills": [
+        "service-add-agents-to-contact-center-create",
         "service-agentforce-contact-center-coordinate",
         "service-catalog-template-coordinate",
         "service-concierge-portal-generate",
@@ -119,7 +120,9 @@
         "service-itsm-teams-employee-agent-configure",
         "service-itsm-teams-itdesk-configure",
         "service-itsm-teams-itservice-configure",
-        "service-native-voice-recording-transcription-configure"
+        "service-native-voice-recording-transcription-configure",
+        "service-remove-agents-from-contact-center-assign",
+        "service-voice-configuration-manage"
       ]
     },
     "sf-industries": {
@@ -137,16 +140,16 @@
       ]
     },
     "sf-crm-analytics": {
-      "version": "1.0.2",
-      "hash": "44528470665293de976deae807d5045caec7d0d1a166879fbdba3854b871add1",
+      "version": "1.0.3",
+      "hash": "91b1e4dac197ddbde9ea84712a0b21fa36b328b708a18095a76ad6df87892912",
       "skills": [
         "crm-analytics-wave-generate",
         "tableau-next-asset-create"
       ]
     },
     "sf-industries-misc": {
-      "version": "1.0.5",
-      "hash": "0d47b6907424e7d5b63c106dfaf4f2d7cf5eb26323ce6a6f99ba8f49d4add4c8",
+      "version": "1.0.6",
+      "hash": "96333008f472c486ffdf6ede79bf14f9f1a262f0e5c0b3e62c86ca0131aa26f9",
       "skills": [
         "afcc-setup-coordinate",
         "insurance-brokerage-agency-billing-configure",
@@ -456,6 +459,7 @@
     "platform-role-hierarchy-apply": "sf-platform-extras",
     "sales-agentforce-pipeline-management-configure": "sf-industries-misc",
     "sales-call-scoring-configure": "sf-industries-misc",
+    "service-add-agents-to-contact-center-create": "sf-service-itsm",
     "service-agentforce-contact-center-coordinate": "sf-service-itsm",
     "service-catalog-template-coordinate": "sf-service-itsm",
     "service-concierge-portal-generate": "sf-service-itsm",
@@ -481,13 +485,15 @@
     "service-itsm-teams-itdesk-configure": "sf-service-itsm",
     "service-itsm-teams-itservice-configure": "sf-service-itsm",
     "service-native-voice-recording-transcription-configure": "sf-service-itsm",
+    "service-remove-agents-from-contact-center-assign": "sf-service-itsm",
+    "service-voice-configuration-manage": "sf-service-itsm",
     "tableau-next-asset-create": "sf-crm-analytics"
   },
   "retired": {},
-  "upstreamSha": "431c50f69746c84c6348c19778b71d6ad257f696",
+  "upstreamSha": "b757b21a206bd963b747f9088e147f2fb777986a",
   "external": {
     "b2c-developer-tooling": {
-      "sha": "7c62d2c6bc28d9486460c074a329d42b783d68fe",
+      "sha": "e607ad22e801e63e85ecb3d91e337f58c393a66c",
       "plugins": [
         "b2c",
         "b2c-cli",

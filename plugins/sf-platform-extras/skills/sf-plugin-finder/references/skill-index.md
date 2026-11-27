@@ -52,6 +52,7 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `omnistudio-omniscript-generate` | `sf-omnistudio` | `sf-omnistudio@cloudzlab` |
 | `sales-agentforce-pipeline-management-configure` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
 | `sales-call-scoring-configure` | `sf-industries-misc` | `sf-industries-misc@cloudzlab` |
+| `service-add-agents-to-contact-center-create` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-agentforce-contact-center-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-catalog-template-coordinate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-concierge-portal-generate` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
@@ -77,6 +78,8 @@ Every skill in a specialist plugin, with the plugin that provides it. Search thi
 | `service-itsm-teams-itdesk-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-itsm-teams-itservice-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `service-native-voice-recording-transcription-configure` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
+| `service-remove-agents-from-contact-center-assign` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
+| `service-voice-configuration-manage` | `sf-service-itsm` | `sf-service-itsm@cloudzlab` |
 | `tableau-next-asset-create` | `sf-crm-analytics` | `sf-crm-analytics@cloudzlab` |
 | `commerce-b2b-open-code-components-integrate` | `commerce-b2b` (Salesforce) | `commerce-b2b@salesforce` |
 | `commerce-b2b-open-code-components-replace` | `commerce-b2b` (Salesforce) | `commerce-b2b@salesforce` |
