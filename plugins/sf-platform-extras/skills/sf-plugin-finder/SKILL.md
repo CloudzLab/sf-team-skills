@@ -39,7 +39,7 @@ Never install without the developer's agreement, and never change core plugins: 
 | `sf-field-service` | Field Service: scheduling policies, work plans and rules, data capture forms, mobile branding and technician pre-work briefs. | 11 | `sf-field-service@cloudzlab` |
 | `sf-omnistudio` | OmniStudio: OmniScripts, FlexCards, Integration Procedures, DataMappers, EPC product catalog and DataPack deployment. | 8 | `sf-omnistudio@cloudzlab` |
 | `sf-commerce` | Commerce beyond B2B storefront components: B2B store setup, delivery estimates, BOPIS, fees, returns, merchant catalogs and buyer groups, merchant insights and React storefronts. | 2 | `sf-commerce@cloudzlab` |
-| `sf-service-itsm` | IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog. | 25 | `sf-service-itsm@cloudzlab` |
+| `sf-service-itsm` | IT Service Management and other Service Cloud setup: incidents, CMDB, IT service agents, Slack and Teams channels, SLAs, contact center and service catalog. | 28 | `sf-service-itsm@cloudzlab` |
 | `sf-industries` | Settings shared across Industry clouds: decision tables and matrices, contact center, home health, care management, fundraising, compliance and document AI. | 1 | `sf-industries@cloudzlab` |
 | `sf-consumer-goods` | Consumer Goods Cloud: store visits and activities, trade promotions, promotion dashboards and data sync. | 1 | `sf-consumer-goods@cloudzlab` |
 | `sf-crm-analytics` | CRM Analytics and Tableau Next: dashboards, report notifications, sharing inheritance and Tableau Next setup. | 2 | `sf-crm-analytics@cloudzlab` |
